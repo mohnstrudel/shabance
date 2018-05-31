@@ -15,7 +15,7 @@ require 'capistrano/puma'
 
 install_plugin Capistrano::Puma
 require 'capistrano/figaro_yml'
-require 'capistrano/delayed_job'
+# require 'capistrano/delayed_job'
 
 # require 'rollbar/capistrano3'
 require 'capistrano/yarn'
