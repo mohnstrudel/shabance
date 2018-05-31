@@ -63,6 +63,7 @@ group :development do
   gem 'capistrano3-puma',   require: false
 
   gem 'capistrano-figaro-yml'
+  gem 'capistrano-yarn'
 
 end
 
