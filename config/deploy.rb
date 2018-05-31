@@ -50,7 +50,7 @@ set :yarn_env_variables, {}
 # Link the dirs, so uploaded assets won't be deleted after each deployment
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads node_modules client/node_modules}
 
-before :start, :master_key
+
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -112,7 +112,9 @@ namespace :deploy do
     after 'deploy:published', 'delayed_job:restart'
   end
 
+
   before :starting,     :check_revision
+  before :starting,     :master_key
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
