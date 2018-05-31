@@ -44,7 +44,7 @@ set :yarn_roles, :all                                     # default
 set :yarn_env_variables, {}
 
 ## Linked Files & Directories (Default None):
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/master.key}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Link the dirs, so uploaded assets won't be deleted after each deployment
@@ -69,7 +69,8 @@ namespace :deploy do
   desc 'Transfer secret.key'
   task :master_key do
     on roles(:app) do
-      execute("scp config/master.key deploy@165.227.143.13:/home/deploy/apps/shabance/current/config/")
+      # execute("scp config/master.key deploy@165.227.143.13:/home/deploy/apps/shabance/current/config/")
+      append :linked_files, "config/master.key"
     end
   end
   
