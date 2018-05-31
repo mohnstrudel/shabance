@@ -1,0 +1,51 @@
+%nav.navbar-default.navbar-static-side{:role => "navigation"}
+  .sidebar-collapse
+    %ul#side-menu.nav.metismenu
+      %li.nav-header
+        .dropdown.profile-element
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %span.clear
+              %span.block.m-t-xs
+                %strong.font-bold
+                  ="#{current_user.try(:first_name)} #{current_user.try(:second_name)}"
+              %span.text-muted.text-xs.block
+                Art Director
+                %b.caret
+          %ul.dropdown-menu.animated.fadeInRight.m-t-xs
+            -if current_user
+              %li
+                =link_to edit_admin_user_path(current_user.try(:id)) do
+                  =t('admin.profile')
+            %li
+              =link_to destroy_user_session_path do
+                =t('admin.logout')
+        .logo-element
+          IN+
+      =nav_link admin_path do
+        %i.fa.fa-area-chart
+        %span.nav-label
+          =t('admin.navigation.dashboard')
+      =nav_link "" do
+        %i.fa.fa-newspaper-o
+        %span.nav-label
+          =t('admin.navigation.posts.main')
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to t('admin.navigation.posts.all_posts'), admin_posts_path
+          %li
+            =link_to t('admin.navigation.posts.new_post'), new_admin_post_path
+          %li
+            =link_to t('admin.navigation.posts.post_categories'), admin_post_categories_path
+
+      =nav_link "" do
+        %i.fa.fa-users
+        %span.nav-label
+          =t('admin.navigation.users.main')
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to t('admin.navigation.users.all_users'), admin_users_path
+          %li
+            =link_to t('admin.navigation.users.new_user'), new_admin_user_path
+
