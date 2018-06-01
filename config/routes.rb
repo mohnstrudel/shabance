@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
+    get 'hello_me', to: 'dashboard#hello_me'
   end
 end

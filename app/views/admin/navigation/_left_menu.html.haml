@@ -28,24 +28,11 @@
       =nav_link "" do
         %i.fa.fa-newspaper-o
         %span.nav-label
-          =t('admin.navigation.posts.main')
+          Основное
         %span.fa.arrow
         %ul.nav.nav-second-level.collapse
           %li.active
-            =link_to t('admin.navigation.posts.all_posts'), admin_posts_path
+            =link_to 'Hello Me', admin_hello_me_path
           %li
-            =link_to t('admin.navigation.posts.new_post'), new_admin_post_path
-          %li
-            =link_to t('admin.navigation.posts.post_categories'), admin_post_categories_path
-
-      =nav_link "" do
-        %i.fa.fa-users
-        %span.nav-label
-          =t('admin.navigation.users.main')
-        %span.fa.arrow
-        %ul.nav.nav-second-level.collapse
-          %li.active
-            =link_to t('admin.navigation.users.all_users'), admin_users_path
-          %li
-            =link_to t('admin.navigation.users.new_user'), new_admin_user_path
-
+            =link_to 'test', '#'
+          
