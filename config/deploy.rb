@@ -109,9 +109,9 @@ namespace :deploy do
     end
   end
 
-  if Rake::Task.task_defined?('deploy:published')
-    after 'deploy:published', 'delayed_job:restart'
-  end
+  # if Rake::Task.task_defined?('deploy:published')
+  #   after 'deploy:published', 'delayed_job:restart'
+  # end
 
 
   before :starting,     :check_revision
