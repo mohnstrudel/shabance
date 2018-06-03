@@ -29,5 +29,9 @@ module Shabance
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.project_name = "Shabance"
+
+    config.service_types = {'1' => 'Физические лица', '2' => 'Юридические лица'}
   end
 end

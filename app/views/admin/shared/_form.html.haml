@@ -1,0 +1,26 @@
+-if object.errors.any?
+  .panel.panel-warning
+    .panel-heading
+      %i.fa.fa-warning
+      Warning - Errors
+    .panel-body
+      %ul
+        -object.errors.each do |attribute, message| 
+          %li
+            ="#{object.class.human_attribute_name(attribute)} - #{message}"
+.row
+  .col-lg-12
+    =form_for admin_form_arguments_builder(object, local_assigns[:namespace]), :html => {:class => "form-horizontal"} do |f|
+      .tabs-container
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab-1"}
+              =t('admin.form.tab_main.title')
+          -if object.respond_to?(:seo)
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab-3"}
+                SEO
+        .tab-content
+          #tab-1.tab-pane.active
+            .panel-body
+              =render partial: "admin/shared/form/main_fields", locals: { f: f, object: object, namespace: local_assigns[:namespace] }

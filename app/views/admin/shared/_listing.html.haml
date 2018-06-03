@@ -1,0 +1,143 @@
+.row
+  .col-lg-12
+    .ibox.float-e-margins
+      .ibox-title
+        %h5
+          ="#{object_name(object).pluralize.capitalize} here"
+        .ibox-tools
+          %a.collapse-link
+            %i.fa.fa-chevron-up
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-wrench
+          %ul.dropdown-menu.dropdown-user
+            %li
+              %a{:href => "#"} Config option 1
+            %li
+              %a{:href => "#"} Config option 2
+          %a.close-link
+            %i.fa.fa-times
+      .ibox-content
+        .row
+          .col-sm-12.m-b-xs
+            .pull-right
+              -if params[:sublevel]
+                =link_to "Создать новую запись", send("new_admin_#{local_assigns[:namespace]}#{object_name(object)}_path",sublevel: true), class: "btn btn-w-m btn-primary", id: "new_entry"
+              -else
+                =link_to "Создать новую запись", send("new_admin_#{local_assigns[:namespace]}#{object_name(object)}_path"), class: "btn btn-w-m btn-primary", id: "new_entry"
+        =form_tag admin_bulk_delete_path(sublevel: params[:sublevel], :id => "bulk-edit-form") do
+          =hidden_field_tag :object, object_name(object)
+          .table-responsive          
+            %table.table.table-striped#listing_table
+              %thead
+                %tr
+                  %th
+                  -if object.has_attribute? :url
+                    %th
+                      URL
+                  -if object.has_attribute? :image
+                    %th
+                      =t('admin.form.model.image')
+                  -if object.has_attribute? :logo
+                    %th
+                      =t('admin.form.model.logo')  
+                  -if object.has_attribute? :title or object.try(:translated?, :title)
+                    %th
+                      =t('admin.form.model.title')
+                  -if object.has_attribute? :category_id
+                    %th
+                      =t('admin.form.model.category')
+                  -if object.has_attribute? :manufacturer_id && object.model_name.name != 'Post'
+                    %th
+                      =t('admin.form.model.manufacturer')
+                  -if object.has_attribute? :question
+                    %th
+                      =t('admin.form.model.question')
+                  -if object.has_attribute? :name
+                    %th
+                      =t('admin.form.model.name')
+                  -if object.has_attribute? :first_name
+                    %th
+                      =t('admin.form.model.first_name')
+                  -if object.has_attribute? :body or object.try(:translated?, :body)
+                    %th
+                      =t('admin.form.model.body')
+                  -if object.has_attribute? :slug
+                    %th
+                      =t('admin.form.model.slug')
+                  -if object.has_attribute? :email
+                    %th
+                      =t('admin.form.model.email')
+                  -if object.has_attribute? :type
+                    %th
+                      =t('admin.form.model.type')
+                  -if object.has_attribute? :subject
+                    %th
+                      =t('admin.form.model.subject')
+                  %th
+                    =t('admin.form.model.created')
+                  %th.text-right
+                    =t('admin.form.actions.main')
+              %tbody
+                -object.each do |obj|
+                  %tr
+                    %td.checkbox_column
+                      =check_box_tag "object_ids[]", obj.id, false, class: "i-checks bulk_actionable"
+                    -if obj.respond_to?(:url)
+                      %td
+                        =obj.url
+                    -if obj.respond_to?(:image) 
+                      %td
+                        =image_tag obj.image.url(:mini_thumb)
+                    -if obj.respond_to?(:logo)
+                      %td
+                        =image_tag_or_default(obj, 'logo', version: :mini_thumb)
+                    -if obj.respond_to?(:title)
+                      %td
+                        =link_to obj.title, send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj)
+                    -if obj.respond_to?(:category_id)
+                      %td
+                        =obj.category.try(:title)
+                    -if obj.respond_to?(:manufacturer) && obj.model_name.name != 'Post'
+                      %td
+                        =obj.manufacturer.try(:title)
+                    -if obj.respond_to?(:question)
+                      %td
+                        =obj.question
+                    -if obj.respond_to?(:name)
+                      %td
+                        =obj.name
+                    -if obj.respond_to?(:first_name)
+                      %td
+                        =obj.first_name
+                    -if obj.respond_to?(:body)
+                      %td
+                        %small
+                          =truncate(obj.body, length: 100)
+                    -if obj.respond_to?(:slug)
+                      %td
+                        =url_for_page(obj)
+                    -if obj.respond_to?(:email)
+                      %td
+                        =obj.email
+                    -if obj.respond_to?(:type)
+                      %td
+                        =obj.type
+                    -if obj.respond_to?(:subject)
+                      %td
+                        =obj.subject
+                    %td
+                      =time_ago_in_words(obj.created_at)
+                      =t('admin.form.created_ago')
+                    %td.text-right
+                      .btn-group
+                        =link_to 'Редактировать', send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), class: "btn-white btn btn-xs", id: "edit_list_item_#{obj.id}"
+                        =link_to 'Удалить', send("admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj), method: :delete, data: {confirm: t('admin.form.confirm.main') }, class: "btn-white btn btn-xs", id: "delete_list_item_#{obj.id}"
+          .row
+            .col-sm-12.m-b-xs
+              .pull-left
+                #bulk-actions
+                  = submit_tag 'Удалить все', class: "btn btn-xs btn-danger", id: "bulk-delete", data: {confirm: 'Удалить все записи?'}
+        .row
+          .col-sm-12.m-b-xs
+            / =render partial: "admin/shared/form/listing/pager", locals: { object: object }
+            / %ul.pagination.pull-right

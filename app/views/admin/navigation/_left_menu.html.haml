@@ -35,4 +35,21 @@
             =link_to 'Hello Me', admin_hello_me_path
           %li
             =link_to 'test', '#'
+      =nav_link "", :class => "special_link" do
+        Shabance
+
+      =nav_link "" do
+        %i.fa.fa-handshake-o
+        %span.nav-label
+          Услуги 
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to 'Список услуг', admin_services_path
+          %li
+            =link_to 'Создать услугу', new_admin_service_path
+          %li
+            =link_to 'Категории услуг', admin_categories_path
+          %li
+            =link_to 'Подкатегории услуг', admin_categories_path(sublevel: true)
           

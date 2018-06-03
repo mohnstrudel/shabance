@@ -1,9 +1,130 @@
 .wrapper.wrapper-content.animated.fadeInRight
   .row
-    .col-lg-12
-      .text-center.m-t-lg
-        %h1
-          Добро пожаловать на главную страницу Y.CMS!
-        %small
-          CMS для ваших проектов, написанных на Ruby on Rails. Наслаждайтесь!
+    .col-lg-2
+      .ibox.float-e-margins
+        .ibox-title
+          %span.label.label-success.pull-right Monthly
+          %h5 Views
+        .ibox-content
+          %h1.no-margins 386,200
+          .stat-percent.font-bold.text-success
+            98%
+            %i.fa.fa-bolt
+          %small Total views
+    .col-lg-2
+      .ibox.float-e-margins
+        .ibox-title
+          %span.label.label-info.pull-right Annual
+          %h5 Orders
+        .ibox-content
+          %h1.no-margins 80,800
+          .stat-percent.font-bold.text-info
+            20%
+            %i.fa.fa-level-up
+          %small New orders
+    .col-lg-4
+      .ibox.float-e-margins
+        .ibox-title
+          %span.label.label-primary.pull-right Today
+          %h5 visits
+        .ibox-content
+          .row
+            .col-md-6
+              %h1.no-margins 406,42
+              .font-bold.text-navy
+                44%
+                %i.fa.fa-level-up
+                %small Rapid pace
+            .col-md-6
+              %h1.no-margins 206,12
+              .font-bold.text-navy
+                22%
+                %i.fa.fa-level-up
+                %small Slow pace
+    .col-lg-4
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 Monthly income
+          .ibox-tools
+            %span.label.label-primary Updated 12.2015
+        .ibox-content.no-padding
+          .flot-chart.m-t-lg{:style => "height: 55px;"}
+            #flot-chart1.flot-chart-content
+  .row
+    .col-lg-8
+      .ibox.float-e-margins
+        .ibox-content
+          %div
+            %span.pull-right.text-right
+              %small
+                Average value of sales in the past month in:
+                %strong United states
+              %br/
+              All sales: 162,862
+            %h3.font-bold.no-margins
+              Half-year revenue margin
+            %small Sales marketing.
+          .m-t-sm
+            .row
+              .col-md-8
+                %div
+                  %canvas#lineChart{:height => "114"}
+              .col-md-4
+                %ul.stat-list.m-t-lg
+                  %li
+                    %h2.no-margins 2,346
+                    %small Total orders in period
+                    .progress.progress-mini
+                      .progress-bar{:style => "width: 48%;"}
+                  %li
+                    %h2.no-margins 4,422
+                    %small Orders in last month
+                    .progress.progress-mini
+                      .progress-bar{:style => "width: 60%;"}
+          .m-t-md
+            %small.pull-right
+              %i.fa.fa-clock-o
+              Update on 16.07.2015
+            %small
+              %strong Analysis of sales:
+              The value has been changed over time, and last month reached a level over $50,000.
+    .col-lg-4
+      .ibox.float-e-margins
+        .ibox-title
+          %span.label.label-warning.pull-right Data has changed
+          %h5 User activity
+        .ibox-content
+          .row
+            .col-xs-4
+              %small.stats-label Pages / Visit
+              %h4 236 321.80
+            .col-xs-4
+              %small.stats-label % New Visits
+              %h4 46.11%
+            .col-xs-4
+              %small.stats-label Last week
+              %h4 432.021
+        .ibox-content
+          .row
+            .col-xs-4
+              %small.stats-label Pages / Visit
+              %h4 643 321.10
+            .col-xs-4
+              %small.stats-label % New Visits
+              %h4 92.43%
+            .col-xs-4
+              %small.stats-label Last week
+              %h4 564.554
+        .ibox-content
+          .row
+            .col-xs-4
+              %small.stats-label Pages / Visit
+              %h4 436 547.20
+            .col-xs-4
+              %small.stats-label % New Visits
+              %h4 150.23%
+            .col-xs-4
+              %small.stats-label Last week
+              %h4 124.990
+
     

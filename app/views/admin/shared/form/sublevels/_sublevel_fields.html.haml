@@ -1,0 +1,10 @@
+-if (!object.try(:parent_id).nil? || params[:sublevel])
+  -if object.respond_to?(:parent_id)
+    .form-group
+      %label.col-lg-2.control-label
+        Выбрать родительский элемент
+      .col-lg-10
+        / =f.collection_select(:parent_id, object.class.name.constantize.all, :id, :title, {include_blank: true, :include_hidden => true, :selected => nil}, { class: 'form-control m-b'})
+        =f.select :parent_id, object.class.name.constantize.top_level.map { |obj| [ obj.title, obj.id ] }, {}, { class: "form-control m-b" }
+    .hr-line-dashed
+

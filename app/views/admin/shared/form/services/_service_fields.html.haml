@@ -1,0 +1,35 @@
+-if object.respond_to?(:service_type)
+  .form-group
+    %label.col-lg-2.control-label
+      Тип услуги
+    .col-lg-10
+      =f.select :service_type, options_for_select(Rails.application.config.service_types.collect{ |u| [u[1], u[0]] }, object.service_type), {}, { class: "select2_language form-control"}
+  .hr-line-dashed
+
+-if object.respond_to?(:category_id)
+  .form-group
+    %label.col-lg-2.control-label
+      Категория
+    .col-lg-10
+      =f.grouped_collection_select :category_id, Category.top_level, :subcategories, :title, :id, :title, { include_blank: 'Выбрать категорию' }, class: 'form-control select2_categories'
+  .hr-line-dashed
+
+-if object.respond_to?(:leading_description)
+  .form-group
+    %label.col-sm-2.control-label
+      Вводное описание
+    .col-sm-10
+      =f.text_area :leading_description, class: 'form-control', rows: 12, data: {provide: "markdown"}
+      / =f.bootsy_area :description, class: 'form-control', rows: 12
+      %span.help-block.m-b-none Вводное описание, появляется всегда в начале страницы. Обязательно для заполнения.
+  .hr-line-dashed
+
+-if object.respond_to?(:ending_description)
+  .form-group
+    %label.col-sm-2.control-label
+      Завершающее описание
+    .col-sm-10
+      =f.text_area :ending_description, class: 'form-control', rows: 12, data: {provide: "markdown"}
+      / =f.bootsy_area :description, class: 'form-control', rows: 12
+      %span.help-block.m-b-none Завершающее описание, появляется всегда в конце страницы. Не обязательно для заполнения.
+  .hr-line-dashed

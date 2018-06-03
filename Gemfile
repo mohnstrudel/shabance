@@ -43,6 +43,11 @@ gem 'ckeditor'
 gem 'figaro'
 gem 'webpacker'
 gem 'devise'
+gem 'friendly_id'
+gem 'russian'
+gem 'redcarpet'
+
+gem 'bootstrap-glyphicons' #Удалить когда посмотрю подкаст от GoRails!
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -51,4 +51,6 @@
 
 // REMOVED turbolinks
 
+//= require admin/services
+
 
