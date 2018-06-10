@@ -24,6 +24,17 @@
       %span.help-block.m-b-none Вводное описание, появляется всегда в начале страницы. Обязательно для заполнения.
   .hr-line-dashed
 
+-if object.respond_to?(:blocks)
+  .form-group
+    %label.col-sm-2.control-label
+      Добавить блок с содержимым
+    .col-sm-10
+      =f.fields_for :blocks do |block_builder|
+        =render partial: 'admin/shared/form/blocks/block_fields', locals: { f: block_builder }
+      %span.help-block.m-b-none
+        =link_to_add_fields 'Добавить блок', f, :blocks, 'admin/shared/form/blocks/block_fields', class: 'btn btn-default'
+  .hr-line-dashed
+
 -if object.respond_to?(:ending_description)
   .form-group
     %label.col-sm-2.control-label
@@ -33,3 +44,4 @@
       / =f.bootsy_area :description, class: 'form-control', rows: 12
       %span.help-block.m-b-none Завершающее описание, появляется всегда в конце страницы. Не обязательно для заполнения.
   .hr-line-dashed
+

@@ -1,0 +1,5 @@
+.block_row
+  =f.text_area :block_body, class: 'form-control', rows: 4, data: {provide: "markdown"}
+  %span
+    =f.hidden_field :_destroy
+    =link_to 'Удалить', "#", class: "remove_record btn btn-danger"

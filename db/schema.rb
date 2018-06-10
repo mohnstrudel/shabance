@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_101718) do
+ActiveRecord::Schema.define(version: 2018_06_10_100923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocks", force: :cascade do |t|
+    t.text "block_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "service_id"
+    t.index ["service_id"], name: "index_blocks_on_service_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 2018_06_03_101718) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.string "service_type"
+    t.bigint "block_id"
+    t.index ["block_id"], name: "index_services_on_block_id"
     t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["slug"], name: "index_services_on_slug", unique: true
   end
@@ -67,6 +77,8 @@ ActiveRecord::Schema.define(version: 2018_06_03_101718) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "blocks", "services"
   add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "services", "blocks"
   add_foreign_key "services", "categories"
 end

@@ -4,6 +4,9 @@ class Service < ApplicationRecord
 
   belongs_to :category
 
+  has_many :blocks, dependent: :destroy
+  accepts_nested_attributes_for :blocks, :allow_destroy => true
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
