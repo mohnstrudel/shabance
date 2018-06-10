@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'hello_me', to: 'dashboard#hello_me'
     resources :services
     resources :categories
+    resources :cases
 
     post 'bulk_delete', to: 'bulk_actions#bulk_delete'
   end

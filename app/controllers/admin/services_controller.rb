@@ -10,7 +10,7 @@ class Admin::ServicesController < AdminController
 
   def new
     @service = Service.new
-    # @service.barcodes.build
+    @service.blocks.build
     # @service.build_seo
   end
 
@@ -24,9 +24,9 @@ class Admin::ServicesController < AdminController
   end
 
   def edit
-    # if @service.barcodes.blank?
-    #   @service.barcodes.build
-    # end
+    if @service.blocks.blank?
+      @service.blocks.build
+    end
     # if @service.seo.blank?
     #   @service.build_seo
     # end

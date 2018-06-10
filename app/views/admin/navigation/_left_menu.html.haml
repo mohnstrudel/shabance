@@ -52,4 +52,14 @@
             =link_to 'Категории услуг', admin_categories_path
           %li
             =link_to 'Подкатегории услуг', admin_categories_path(sublevel: true)
+      =nav_link "" do
+        %i.fa.fa-linode
+        %span.nav-label
+          Кейсы
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to 'Список кейсов', admin_cases_path
+          %li
+            =link_to 'Создать кейс', new_admin_case_path
           
