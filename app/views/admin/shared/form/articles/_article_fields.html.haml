@@ -1,0 +1,8 @@
+-if object.respond_to?(:article_category_id)
+  .form-group
+    %label.col-lg-2.control-label
+      Категория для статьи
+    .col-lg-10
+      / =f.collection_select(:parent_id, object.class.name.constantize.all, :id, :title, {include_blank: true, :include_hidden => true, :selected => nil}, { class: 'form-control m-b'})
+      =f.select :article_category_id, ArticleCategory.all.map { |category| [ category.title, category.id ] }, {}, { class: "form-control m-b" } 
+  .hr-line-dashed

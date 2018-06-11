@@ -26,6 +26,16 @@
         %span.nav-label
           =t('admin.navigation.dashboard')
       =nav_link "" do
+        %i.fa.fa-flask
+        %span.nav-label
+          Сервисы
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to 'Абоненты рассылки', admin_newsletter_requests_path
+          %li
+            =link_to 'Обращения с сайта', admin_contact_requests_path
+      =nav_link "" do
         %i.fa.fa-newspaper-o
         %span.nav-label
           Основное
@@ -62,4 +72,29 @@
             =link_to 'Список кейсов', admin_cases_path
           %li
             =link_to 'Создать кейс', new_admin_case_path
+      =nav_link "" do
+        %i.fa.fa-newspaper-o
+        %span.nav-label
+          Статьи
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to 'Список статей', admin_articles_path
+          %li
+            =link_to 'Создать статью', new_admin_article_path
+          %li
+            =link_to 'Категории статей', admin_article_categories_path
+      =nav_link "" do
+        %i.fa.fa-rss-square
+        %span.nav-label
+          Блог
+        %span.fa.arrow
+        %ul.nav.nav-second-level.collapse
+          %li.active
+            =link_to 'Список постов', admin_posts_path
+          %li
+            =link_to 'Создать пост', new_admin_post_path
+          %li
+            =link_to 'Категории постов', admin_post_categories_path
+            
           

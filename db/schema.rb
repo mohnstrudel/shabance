@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_101640) do
+ActiveRecord::Schema.define(version: 2018_06_11_184338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_article_categories_on_article_id"
+    t.index ["slug"], name: "index_article_categories_on_slug", unique: true
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "article_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["article_category_id"], name: "index_articles_on_article_category_id"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
+  end
 
   create_table "blocks", force: :cascade do |t|
     t.text "block_body"
@@ -42,6 +63,17 @@ ActiveRecord::Schema.define(version: 2018_06_10_101640) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "contact_requests", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "subject"
+    t.text "body"
+    t.string "page_reference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -52,6 +84,44 @@ ActiveRecord::Schema.define(version: 2018_06_10_101640) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "newsletter_requests", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_categories", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_categories_on_post_id"
+    t.index ["slug"], name: "index_post_categories_on_slug", unique: true
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_category_id"
+    t.index ["post_category_id"], name: "index_posts_on_post_category_id"
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "message"
+    t.string "phone"
+    t.string "subject"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "services", force: :cascade do |t|
@@ -86,8 +156,12 @@ ActiveRecord::Schema.define(version: 2018_06_10_101640) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_categories", "articles"
+  add_foreign_key "articles", "article_categories"
   add_foreign_key "blocks", "services"
   add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "post_categories", "posts"
+  add_foreign_key "posts", "post_categories"
   add_foreign_key "services", "blocks"
   add_foreign_key "services", "categories"
 end

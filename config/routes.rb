@@ -8,6 +8,14 @@ Rails.application.routes.draw do
     resources :services
     resources :categories
     resources :cases
+    resources :articles
+    resources :article_categories
+
+    resources :posts
+    resources :post_categories
+
+    resources :newsletter_requests
+    resources :contact_requests
 
     post 'bulk_delete', to: 'bulk_actions#bulk_delete'
   end

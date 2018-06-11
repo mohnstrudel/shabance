@@ -19,6 +19,12 @@
 
     =render partial: "admin/shared/form/sublevels/sublevel_fields", locals: { f: f, object: object }
 
+    =render partial: "admin/shared/form/articles/article_fields", locals: { f: f, object: object }
+
+    =render partial: "admin/shared/form/posts/post_fields", locals: { f: f, object: object }
+
+    =render partial: "admin/shared/form/contact_requests/contact_request_fields", locals: { f: f, object: object }
+
 
     -if object.respond_to?(:active)
       .form-group
@@ -56,6 +62,16 @@
           =f.text_area :body, class: 'form-control', rows: 12, data: {provide: "markdown"}
           / =f.bootsy_area :body, class: 'form-control', rows: 12
       .hr-line-dashed
+
+    -if object.respond_to?(:email)
+      .form-group
+        %label.col-sm-2.control-label
+          Эл. почта
+        .col-sm-10
+          =f.text_field :email, class: 'form-control'
+          / =f.bootsy_area :body, class: 'form-control', rows: 12
+      .hr-line-dashed
+
     -if object.respond_to?(:slug)
       .form-group
         %label.col-sm-2.control-label

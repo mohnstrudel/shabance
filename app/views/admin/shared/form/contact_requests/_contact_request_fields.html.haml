@@ -1,0 +1,31 @@
+-if object.respond_to?(:name)
+  .form-group
+    %label.col-sm-2.control-label
+      ФИО
+    .col-sm-10
+      =f.text_field :name, class: 'form-control'
+  .hr-line-dashed
+
+-if object.respond_to?(:phone)
+  .form-group
+    %label.col-sm-2.control-label
+      Телефон
+    .col-sm-10
+      =f.text_field :phone, class: 'form-control'
+  .hr-line-dashed
+
+-if object.respond_to?(:page_reference)
+  .form-group
+    %label.col-sm-2.control-label
+      С какой страницы пришли
+    .col-sm-10
+      =f.text_field :page_reference, class: 'form-control'
+  .hr-line-dashed
+
+-if object.respond_to?(:subject)
+  .form-group
+    %label.col-sm-2.control-label
+      Тема обращения
+    .col-sm-10
+      =f.text_field :subject, class: 'form-control'
+  .hr-line-dashed

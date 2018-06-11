@@ -1,0 +1,7 @@
+-if object.respond_to?(:post_category_id)
+  .form-group
+    %label.col-lg-2.control-label
+      Категория для поста
+    .col-lg-10
+      =f.select :post_category_id, PostCategory.all.map { |post_category| [ post_category.title, post_category.id ] }, {}, { class: "form-control m-b" }
+  .hr-line-dashed

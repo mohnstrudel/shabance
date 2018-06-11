@@ -1,0 +1,2 @@
+module Admin::NewsletterRequestsHelper
+end

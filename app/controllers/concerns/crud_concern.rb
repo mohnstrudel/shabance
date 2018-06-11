@@ -13,9 +13,9 @@ module CrudConcern
     # page_size = Rails.application.config.page_size
 
     begin
-      @objects = object.capitalize.constantize.includes(:category).search(keywords).category_scope(cat_id).send(scope)
+      @objects = object.camelize.constantize.includes(:category).search(keywords).category_scope(cat_id).send(scope).order(created_at: :desc)
     rescue NoMethodError => e
-      @objects = object.capitalize.constantize.send(scope)
+      @objects = object.camelize.constantize.send(scope).order(created_at: :desc)
     end
   end
 
