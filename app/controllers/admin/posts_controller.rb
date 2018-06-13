@@ -22,6 +22,7 @@ class Admin::PostsController < AdminController
   end
 
   def edit
+    edit_helper(@post)
   end
 
   def destroy
@@ -35,6 +36,6 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(Post.attribute_names.map(&:to_sym))
+    params.require(:post).permit(Post.attribute_names.map(&:to_sym).push(tag_list:[]))
   end
 end

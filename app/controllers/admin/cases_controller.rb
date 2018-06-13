@@ -21,6 +21,7 @@ class Admin::CasesController < AdminController
   end
 
   def edit
+    edit_helper(@case)
   end
 
   def destroy
@@ -35,7 +36,7 @@ class Admin::CasesController < AdminController
 
   def case_params
     # params.require(:case).permit(case.attribute_names.map(&:to_sym).push(barcodes_attributes: [:id, :value, :_destroy, :case_id]).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
-    params.require(:case).permit(Case.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :case_id ]))
+    params.require(:case).permit(Case.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :case_id ]).push(tag_list: []))
   end
 end
 

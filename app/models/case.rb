@@ -1,4 +1,6 @@
 class Case < ApplicationRecord
+
+  acts_as_taggable_on :tags
   
   before_save :set_slug
 

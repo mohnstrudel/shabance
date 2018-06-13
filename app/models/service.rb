@@ -1,5 +1,7 @@
 class Service < ApplicationRecord
 
+  acts_as_taggable_on :tags
+
   before_save :set_slug
 
   belongs_to :category

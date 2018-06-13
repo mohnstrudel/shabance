@@ -89,6 +89,16 @@
           %span.help-block.m-b-none=t('admin.form.hints.sortable')
       .hr-line-dashed
 
+    -if object.respond_to?(:tag_list)
+      .form-group
+        %label.col-sm-2.control-label
+          Тэги
+        .col-sm-10
+          / =f.text_field :tag_list, value: f.object.tag_list.to_s, class: 'form-control'
+          =f.select :tag_list, f.object.tag_list.map {|i| [i, i]}, {}, {id: 'object_keywords', class: 'form-control custom-bootstrap-tagsinput', data: {role: "tagsinput"}, multiple: true}
+          %span.help-block.m-b-none Тэги разделяются запятыми (тэг1, тэг2, другой тэг, тэг4)
+      .hr-line-dashed
+
 
 
     / Posts part begin (only unique to posts fields)
@@ -120,3 +130,9 @@
     .ibox-footer
       %span.pull-right
         =t('admin.form.misc.required')
+
+    .hr-line-dashed
+    .form-group
+      .col-sm-12
+        Схожие сущности:
+        =@related

@@ -2,9 +2,16 @@ module CrudConcern
   extend ActiveSupport::Concern
 
   included do
-    helper_method :create_helper, :update_helper, :destroy_helper, :index_helper
+    helper_method :create_helper, :update_helper, :destroy_helper, :index_helper, :edit_helper
   end
 
+
+  def edit_helper(object)
+    array_of_models = ["Service", "Post", "Article", "Case"]
+    current = array_of_models - [object.model_name.name]
+    @related = current.map{|i| i.camelize.constantize.tagged_with(object.tag_list, any: true)}.flatten!
+
+  end
 
   def index_helper(object, options = {})
     keywords = params[:keywords]
@@ -39,6 +46,11 @@ module CrudConcern
   end
 
   def update_helper(object, path, params)
+    
+    if object.tag_list.empty? && !params[:tag_list].empty?
+      object.tag_list.add(params[:tag_list])
+    end
+
     begin
       if object.update(params)
         respond_to do |format|

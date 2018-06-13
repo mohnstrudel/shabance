@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+
+  acts_as_taggable_on :tags
+  
   belongs_to :article_category
 
   before_save :set_slug

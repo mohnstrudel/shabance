@@ -49,6 +49,8 @@
 // Markdown
 //= require admin/bootstrap-markdown
 
+//= require bootstrap-tagsinput
+
 // REMOVED turbolinks
 
 //= require admin/services
