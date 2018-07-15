@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   scope module: :front do
     root "static_pages#home"
+    resources :categories do
+      resources :subcategories
+    end
   end
 
   namespace :admin do
