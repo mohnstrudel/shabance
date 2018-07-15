@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title 
+    = stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i%7CFrank+Ruhl+Libre:300,400,500,700,900' 
+    = javascript_include_tag 'front', media: 'all', 'data-turbolinks-track' => true
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    = csrf_meta_tags
+
+  %body
+    / - - - - - - - - - - - - - Wrapper - - - - - - - - - - - - - - - -
+    #wrapper.wrapper-container
+      / - - - - - - - - - - - - Mobile Menu - - - - - - - - - - - - - -
+      =render 'front/navigation/header'
+      / - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - -
+      #content
+        =yield
+      / - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - -
+      =render 'front/navigation/footer'
+
+
+      
+
+
+    

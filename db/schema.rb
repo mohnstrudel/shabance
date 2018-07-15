@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_202705) do
+ActiveRecord::Schema.define(version: 2018_07_03_132307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,23 @@ ActiveRecord::Schema.define(version: 2018_06_11_202705) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "opening_hours", force: :cascade do |t|
+    t.string "title"
+    t.string "value"
+    t.bigint "setting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setting_id"], name: "index_opening_hours_on_setting_id"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "value"
+    t.bigint "setting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setting_id"], name: "index_phones_on_setting_id"
+  end
+
   create_table "post_categories", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -137,6 +154,17 @@ ActiveRecord::Schema.define(version: 2018_06_11_202705) do
     t.index ["block_id"], name: "index_services_on_block_id"
     t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["slug"], name: "index_services_on_slug", unique: true
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "url"
+    t.string "address"
+    t.string "long"
+    t.string "lat"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -185,6 +213,8 @@ ActiveRecord::Schema.define(version: 2018_06_11_202705) do
   add_foreign_key "articles", "article_categories"
   add_foreign_key "blocks", "services"
   add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "opening_hours", "settings"
+  add_foreign_key "phones", "settings"
   add_foreign_key "post_categories", "posts"
   add_foreign_key "posts", "post_categories"
   add_foreign_key "services", "blocks"

@@ -1,0 +1,6 @@
+.phone_row
+  .input-group
+    =f.text_field :value, class: 'form-control', data: { "mask" => "+9 (999) 999-99-99" }
+    %span.input-group-btn
+      =f.hidden_field :_destroy
+      =link_to 'Удалить', "#", class: "remove_record btn btn-danger"

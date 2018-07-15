@@ -11,7 +11,8 @@
     %label.col-sm-2.control-label
       Телефон
     .col-sm-10
-      =f.text_field :phone, class: 'form-control'
+      =f.text_field :phone, class: 'form-control', data: { "mask" => "+9 (999) 999-99-99" }
+      %span.help-block.m-b-none (Основной) телефон.
   .hr-line-dashed
 
 -if object.respond_to?(:page_reference)

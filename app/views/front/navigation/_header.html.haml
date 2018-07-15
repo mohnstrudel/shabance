@@ -1,0 +1,224 @@
+%nav#mobile-advanced.mobile-advanced
+/ - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - -
+%header#header.header.style-2.sticky-header
+  / - - - - - - - - - - - / Mobile Menu - - - - - - - - - - - - -
+  / main menu
+  .menu-holder
+    .container
+      .menu-wrap
+        .nav-item
+          / - - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - - -
+          %nav#main-navigation.main-navigation
+            %ul#menu.clearfix
+              %li.current.dropdown
+                %a{:href => "#"} Home
+                / sub menu
+                .sub-menu-wrap
+                  %ul
+                    %li
+                      %a{:href => "index.html"} Homepage Layout 1
+                    %li.current
+                      %a{:href => "home_2.html"} Homepage Layout 2
+                    %li
+                      %a{:href => "home_3.html"} Homepage Layout 3
+              %li.dropdown.has-megamenu
+                %a{:href => "#"} Practice Areas
+                / sub menu
+                .sub-menu-wrap.mega-menu.flex-row
+                  %ul
+                    %li
+                      %a{:href => "practice_area_v1.html"} Practice Areas Overview v1
+                    %li
+                      %a{:href => "practice_area_v2.html"} Practice Areas Overview v2
+                    %li
+                      %a{:href => "practice_area_v3.html"} Practice Areas Overview v3
+                    %li
+                      %a{:href => "practice_single.html"} Single Service Page
+                  %ul
+                    %li
+                      %a{:href => "practice_area_v1.html"} Personal Injury
+                    %li
+                      %a{:href => "practice_area_v2.html"} Estate Planning
+                    %li
+                      %a{:href => "practice_area_v3.html"} Maritime &amp; Offshore Injury
+                    %li
+                      %a{:href => "practice_single.html"} Insurance Claims
+                  %ul
+                    %li
+                      %a{:href => "practice_area_v1.html"} Business &amp; Real Estate
+                    %li
+                      %a{:href => "practice_area_v2.html"} Medical/Pharmaceutical Injury
+                    %li
+                      %a{:href => "practice_area_v3.html"} Elder Law
+                    %li
+                      %a{:href => "practice_single.html"} Criminal Defense
+              %li.dropdown
+                %a{:href => "#"} Attorneys
+                / sub menu
+                .sub-menu-wrap
+                  %ul
+                    %li
+                      %a{:href => "attorneys_list_v1.html"} Attorneys List v1
+                    %li
+                      %a{:href => "attorneys_list_v2.html"} Attorneys List v2
+                    %li
+                      %a{:href => "attorney_profile_v1.html"} Attorney Profile Page v1
+                    %li
+                      %a{:href => "attorney_profile_v2.html"} Attorney Profile Page v2
+              %li.dropdown
+                %a{:href => "#"} Pages
+                / sub menu
+                .sub-menu-wrap
+                  %ul
+                    %li
+                      %a{:href => "about.html"} About Us
+                    %li
+                      %a{:href => "testimonials.html"} Testimonials
+                    %li
+                      %a{:href => "case_v1.html"} Case Result v1
+                    %li
+                      %a{:href => "case_v2.html"} Case Result v2
+                    %li
+                      %a{:href => "shortcodes.html"} Shortcodes
+                    %li
+                      %a{:href => "typography.html"} Typography
+                    %li
+                      %a{:href => "404_page.html"} 404 Page
+                    %li
+                      %a{:href => "coming_soon.html"} Coming Soon Page
+              %li.dropdown
+                %a{:href => "#"} Blog
+                / sub menu
+                .sub-menu-wrap
+                  %ul
+                    %li
+                      %a{:href => "blog_classic.html"} Classic
+                    %li
+                      %a{:href => "blog_masonry.html"} Masonry
+                    %li
+                      %a{:href => "blog_single.html"} Single Blog Post
+              %li.dropdown
+                %a{:href => "#"} Contact Us
+                / sub menu
+                .sub-menu-wrap
+                  %ul
+                    %li
+                      %a{:href => "contact_v1.html"} Contact Us v1
+                    %li
+                      %a{:href => "contact_v2.html"} Contact Us v2
+          / - - - - - - - - - - - - end Navigation - - - - - - - - - - - - - - -
+  .top-header
+    .container
+      .flex-row.flex-center.flex-justify
+        .col
+          / Contact info
+          %ul.contact-info.style-2
+            %li.info-item
+              .pre call Us Today
+              .item-info
+                %span{:content => "telephone=no"} 987.654.3210
+        .col
+          / logo
+          .logo-wrap
+            %a.logo{:href => "index.html"}
+              %img{:alt => "", :src => "#{asset_path 'custom/logo.png'}"}/
+        .col
+          %a.btn.btn-big.btn-style-5{:href => "#"} Free Consultation
+/ - - - - - - - - - - - - end Header - - - - - - - - - - - - - - -
+/ - - - - - - - - - - - - - Revolution Slider - - - - - - - - - - - - - - - -
+.rev-slider-wrapper
+  #rev-slider.rev-slider{"data-version" => "5.0"}
+    %ul
+      %li{"data-transition" => "fade"}
+        %img.rev-slidebg{:alt => "", :src => "#{asset_path 'stock/1920x925_bg1.jpg'} "}/
+        / - - - - - - - - - - - - - Layer 1 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme.scaption-white-medium{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":150,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "['0','0','0','0']", "data-responsive_offset" => "on", "data-voffset" => "-200", "data-whitespace" => "nowrap", "data-x" => "['center','center','center','center']", "data-y" => "['middle','middle','middle','middle']"}
+          Insurer Denying Your Claim?
+        / - - - - - - - - - - - - - End of Layer 1 - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme.scaption-white-large2{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "['0','0','0','0']", "data-responsive_offset" => "on", "data-voffset" => "-125", "data-whitespace" => "nowrap", "data-x" => "['center','center','center','center']", "data-y" => "['middle','middle','middle','middle']"}
+          WE CAN HELP!
+        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "['0','0','0','0']", "data-responsive_offset" => "on", "data-voffset" => "-20", "data-whitespace" => "nowrap", "data-x" => "['center','center','center','center']", "data-y" => "['middle','middle','middle','middle']"}
+          %a.btn.btn-big.btn-style-5{:href => "#"} Contact Us Today!
+        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
+      %li{"data-transition" => "fade"}
+        %img.rev-slidebg{:alt => "", :src => "#{asset_path 'stock/1920x925_bg2.jpg'} "}/
+        / - - - - - - - - - - - - - Layer 1 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme.scaption-dark-large{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":150,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "30", "data-responsive_offset" => "on", "data-voffset" => "-170", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
+          Billions of Dollars
+          %br/
+          Won For Our Clients
+        / - - - - - - - - - - - - - End of Layer 1 - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "30", "data-responsive_offset" => "on", "data-voffset" => "-50", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
+          %a.btn.btn-big.btn-style-5{:href => "#"} Request Free Consultation
+        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
+      %li{"data-transition" => "fade"}
+        %img.rev-slidebg{:alt => "", :src => "#{asset_path 'stock/1920x925_bg3.jpg'} "}/
+        / - - - - - - - - - - - - - Layer 1 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme.scaption-white-large{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":150,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "550", "data-responsive_offset" => "on", "data-voffset" => "-180", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
+          When Experience
+          %br/
+          Matters Most!
+        / - - - - - - - - - - - - - End of Layer 1 - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme.scaption-white-small{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "550", "data-responsive_offset" => "on", "data-voffset" => "-80", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
+          %p
+            Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi,
+            %br/
+            aliquet sit amet, euismod in,auctor ut, ligula.
+        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
+        .tp-caption.tp-resizeme{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":750,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "550", "data-responsive_offset" => "on", "data-voffset" => "20", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
+          %a.btn.btn-big.btn-style-5.shadow4{:href => "#"} Contact Us Today!
+        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
+  .icons-box.style-3
+    .flex-row.fx-col-5
+      / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+      .icons-wrap
+        .icons-item
+          .item-box
+            %i.licon-balance
+            %h5.icons-box-title
+              %a{:href => "#"} Experienced Lawyers
+            %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante.
+            %a.info-btn{:href => "#"} Meet Our Attorneys
+      / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+      .icons-wrap
+        .icons-item
+          .item-box
+            %i.licon-bubble-user
+            %h5.icons-box-title
+              %a{:href => "#"} Free Consultation
+            %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante.
+            %a.info-btn{:href => "#"} Request a Case Review
+      / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+      .icons-wrap
+        .icons-item
+          .item-box
+            %i.licon-cash-dollar
+            %h5.icons-box-title
+              %a{:href => "#"} No Fee Unless We Win
+            %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante.
+            %a.info-btn{:href => "#"} Read Client Testimonials
+      / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+      .icons-wrap
+        .icons-item
+          .item-box
+            %i.licon-man
+            %h5.icons-box-title
+              %a{:href => "#"} Focused on You
+            %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante.
+            %a.info-btn{:href => "#"} Learn More
+      / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+      .icons-wrap
+        .icons-item
+          .item-box
+            %i.licon-trophy2
+            %h5.icons-box-title
+              %a{:href => "#"} Millions Recovered
+            %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante.
+            %a.info-btn{:href => "#"} View Case Results
+/ - - - - - - - - - - - - - End of Slider - - - - - - - - - - - - - - - -

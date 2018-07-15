@@ -1,0 +1,11 @@
+.col-md-12
+  .row.opening_hours_row
+    .col-xs-12.col-md-5
+      .form-group
+        =f.text_field :title, class: 'form-control', placeholder: "День, например 'ПН-ПТ'"
+    .col-xs-12.col-md-7.pull-right
+      .input-group
+        =f.text_field :value, class: 'form-control', placeholder: "Время. Например '9:00 - 21:00'"
+        %span.input-group-btn
+          =f.hidden_field :_destroy
+          =link_to 'Удалить', "#", class: "remove_record btn btn-danger"

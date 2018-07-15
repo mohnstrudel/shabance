@@ -1,0 +1,29 @@
+-if object.respond_to?(:phones)
+  .form-group
+    %label.col-sm-2.control-label
+      Дополнительные телефоны
+    .col-sm-10
+      =f.fields_for :phones do |phone_builder|
+        =render partial: 'admin/shared/form/phones/phone_fields', locals: { f: phone_builder }
+      %span.help-block.m-b-none
+        =link_to_add_fields 'Добавить телефон', f, :phones, 'admin/shared/form/phones/phone_fields', class: 'btn btn-default'
+  .hr-line-dashed
+
+-if object.respond_to?(:opening_hours)
+  .form-group
+    %label.col-sm-2.control-label
+      Часы открытия
+    .col-sm-10
+      =f.fields_for :opening_hours do |oh_builder|
+        =render partial: 'admin/shared/form/settings/opening_hours_fields', locals: { f: oh_builder }
+      %span.help-block.m-b-none
+        =link_to_add_fields 'Добавить время открытия', f, :opening_hours, 'admin/shared/form/settings/opening_hours_fields', class: 'btn btn-default'
+  .hr-line-dashed
+
+-if object.respond_to?(:address)
+  .form-group
+    %label.col-sm-2.control-label
+      Адрес 
+    .col-sm-10
+      =f.text_field :address, class: 'form-control'
+  .hr-line-dashed

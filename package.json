@@ -4,10 +4,12 @@
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@rails/webpacker": "^3.5.3",
+    "@types/modernizr": "^3.5.2",
     "bootstrap-tagsinput": "^0.7.1",
     "font-awesome": "^4.7.0",
     "glyphicons-halflings": "^1.9.1",
     "jquery": "^3.3.1",
+    "jquery-ui": "^1.12.1",
     "jquery-ujs": "^1.2.2"
   },
   "version": "1.0.0",

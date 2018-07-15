@@ -7,9 +7,14 @@ module CrudConcern
 
 
   def edit_helper(object)
-    array_of_models = ["Service", "Post", "Article", "Case"]
-    current = array_of_models - [object.model_name.name]
-    @related = current.map{|i| i.camelize.constantize.tagged_with(object.tag_list, any: true)}.flatten!
+    begin
+      array_of_models = ["Service", "Post", "Article", "Case"]
+      current = array_of_models - [object.model_name.name]
+      @related = current.map{|i| i.camelize.constantize.tagged_with(object.tag_list, any: true)}.flatten!
+    rescue => e
+
+      logger.debug "Схожих сущностей нет. Ошибка: #{e.message}"
+    end
 
   end
 
@@ -32,11 +37,11 @@ module CrudConcern
         respond_to do |format|
           format.html {
             redirect_to send(path, object)
-            flash[:primary] = "Well done!"
+            flash[:primary] = "Успешно создано!"
           }
         end
       else
-        flash[:danger] = "Something not quite right"
+        flash[:danger] = "Что-то пошло не так."
         render :new
       end
     rescue => e
@@ -46,9 +51,12 @@ module CrudConcern
   end
 
   def update_helper(object, path, params)
-    
-    if object.tag_list.empty? && !params[:tag_list].empty?
-      object.tag_list.add(params[:tag_list])
+    begin
+      if object.tag_list.empty? && !params[:tag_list].empty?
+        object.tag_list.add(params[:tag_list])
+      end
+    rescue => e
+      logger.debug "Ошибка в обновлении. Текст: #{e.message}"
     end
 
     begin
@@ -56,16 +64,16 @@ module CrudConcern
         respond_to do |format|
           format.html {
             redirect_to send(path, object)
-            flash[:primary] = "Well done!"
+            flash[:primary] = "Успешно обновлено!"
           }
         end
       else
         logger.debug "Encountered errors:"
         logger.debug object.errors.full_messages
-        flash[:danger] = "Something's not quite right"
+        flash[:danger] = "Что-то пошло не так."
         render :edit
       end
-    rescue=>e
+    rescue => e
       flash[:danger] = "Encountered errors: #{e.message}"
       render :edit
     end

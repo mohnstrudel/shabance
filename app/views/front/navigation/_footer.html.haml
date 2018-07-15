@@ -1,0 +1,73 @@
+%footer#footer.footer.style-2
+  .container
+    .main-footer
+      .row.flex-row
+        .col-md-5.col-sm-12
+          .widget
+            %a.logo{:href => "#"}
+              %img{:alt => "", :src => "#{asset_path 'stock/logo2.png'} "}/
+            .content-element4
+              %ul.contact-info.style-2
+                %li.info-item
+                  .pre call Us Today
+                  .item-info
+                    %span{:content => "telephone=no"} 987.654.3210
+            %p
+              8901 Marmora Road, Glasgow, D04 89GR.
+              %br/
+              %span Phone:
+              +1 800 559 6580
+              %br/
+              %span Fax:
+              +1 800 889 9898
+              %br/
+              %span Opening Hours:
+              Mon-Fri 8am- 5pm / Phones are open 24/7
+            %a.info-btn{:href => "#"} Get Directions
+        .col-md-3.col-sm-12
+          .widget
+            %h6.widget-title Quick Links
+            %ul.info-links.v-type
+              %li
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "#"} About
+              %li
+                %a{:href => "#"} Practice Areas
+              %li
+                %a{:href => "#"} Attorneys
+              %li
+                %a{:href => "#"} Blog
+              %li.dropdown
+                %a{:href => "#"} Contact Us
+                / sub menu
+                .sub-menu-wrap
+                  %ul
+                    %li
+                      %a{:href => "contact_v1.html"} Contact Us v1
+                    %li
+                      %a{:href => "contact_v2.html"} Contact Us v2
+        .col-md-4.col-sm-12
+          .widget
+            %h6.widget-title Newsletter Sign Up
+            %form#newsletter.newsletter
+              %input{:name => "newsletter-email", :placeholder => "Enter your email address", :type => "email"}/
+              %button{"data-type" => "submit", :type => "submit"}
+                %i.licon-envelope
+          .widget
+            %h6.widget-title Stay Connected
+            %ul.social-icons
+              %li
+                %a{:href => "#"}
+                  %i.icon-facebook
+              %li
+                %a{:href => "#"}
+                  %i.icon-twitter
+              %li
+                %a{:href => "#"}
+                  %i.icon-gplus-3
+              %li
+                %a{:href => "#"}
+                  %i.icon-linkedin-3
+    .copyright
+      %p Copyright Hicks &amp; Hynson © 2018. All Rights Reserved.

@@ -25,6 +25,8 @@
 
     =render partial: "admin/shared/form/contact_requests/contact_request_fields", locals: { f: f, object: object }
 
+    =render partial: "admin/shared/form/settings/setting_fields", locals: { f: f, object: object }
+
 
     -if object.respond_to?(:active)
       .form-group
