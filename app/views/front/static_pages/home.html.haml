@@ -1,139 +1,125 @@
-/ Page section
+.call-out
+  .container.extra
+    .flex-row.flex-justify.flex-center
+      %h2 Is Your Health Insurance Claim Denied?
+      %a.btn.btn-big.btn-style-6{:href => "#"} We Can Help!
+/ page section
 .page-section
-  .container
-    .align-center
-      .pre-title Experience You Need. Results You Want.
-      %h2.section-title
-        The Attorneys You Want On Your Side
-        %span.item-divider-3.style-3
-      %p
-        Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit
-        %br/
-        amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris
-        %br/
-        fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget,
-        %br/
-        elementum vel, cursus eleifend, elit.
-      %a.btn{:href => "#"} More About Us
-/ Page section
-.page-section-bg
-  .container
+  .container.extra
     .content-element5
       .align-center
         .pre-title Practice Areas
         %h2.section-title
           How We Can Help You
           %span.item-divider-3.style-3
-    .icons-box.style-1.type-3
-      .flex-row.fx-col-3
-        / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-        .icons-wrap
-          .icons-item
-            .item-box
-              %i.licon-bandages
-              %h5.icons-box-title
-                %a{:href => "#"} Personal Injury
-              %ul.custom-list
-                %li
-                  %a{:href => "#"} Auto Accidents
-                %li
-                  %a{:href => "#"} Bicycle Accidents
-                %li
-                  %a{:href => "#"} Brain Injury
-                %li
-                  %a{:href => "#"} Dog Bites
-                %li
-                  %a{:href => "#"} Motorcycle Accidents
-              %a.btn{:href => "#"} View All
-        / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-        .icons-wrap
-          .icons-item
-            .item-box
-              %i.licon-factory2
-              %h5.icons-box-title
-                %a{:href => "#"} Industrial Injury
-              %ul.custom-list
-                %li
-                  %a{:href => "#"} Plant &amp; Refinery Accidents
-                %li
-                  %a{:href => "#"} Mesothelioma/Asbestosis
-                %li
-                  %a{:href => "#"} Workplace Injury
-                %li
-                  %a{:href => "#"} Work Accidents
-                %li
-                  %a{:href => "#"} Workplace Safety
-              %a.btn{:href => "#"} View All
-        / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-        .icons-wrap
-          .icons-item
-            .item-box
-              %i.licon-shield
-              %h5.icons-box-title
-                %a{:href => "#"} Insurance Claims
-              %ul.custom-list
-                %li
-                  %a{:href => "#"} Catastrophic Property Loss
-                %li
-                  %a{:href => "#"} Hurricane Harvey Claims
-                %li
-                  %a{:href => "#"} Types of Insurance Claims
-                %li
-                  %a{:href => "#"} Basic Insurer Requirements
-                %li
-                  %a{:href => "#"} Disability Policy Underwriters
-              %a.btn{:href => "#"} View All
+    .carousel-type-2
+      .owl-carousel.services.flex-row{"data-item-margin" => "30", "data-max-items" => "4"}
+        / owl item
+        .owl-item
+          / service item
+          .service-item
+            %figure
+              %img{:alt => "", :src => "#{asset_path 'stock/289x224_img1.jpg'}"}
+              .service-body
+                %h5.service-title
+                  %a{:href => "#"} Industrial Injury
+                %p Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, elementum vel, cursus eleifend, elit.
+                %a.info-btn{:href => "#"} Read more
+          / owl item
+        .owl-item
+          / service item
+          .service-item
+            %figure
+              %img{:alt => "", :src => "#{asset_path 'stock/289x224_img2.jpg'}"}
+              .service-body
+                %h5.service-title
+                  %a{:href => "#"} Personal Injury
+                %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl.
+                %a.info-btn{:href => "#"} Read more
+        / owl item
+        .owl-item
+          / service item
+          .service-item
+            %figure
+              %img{:alt => "", :src => "#{asset_path 'stock/289x224_img3.jpg'}"}
+              .service-body
+                %h5.service-title
+                  %a{:href => "#"} Insurance Claims
+                %p Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci .
+                %a.info-btn{:href => "#"} Read more
+        / owl item
+        .owl-item
+          / service item
+          .service-item
+            %figure
+              %img{:alt => "", :src => "#{asset_path 'stock/289x224_img4.jpg'}"}
+              .service-body
+                %h5.service-title
+                  %a{:href => "#"} Business  Real Estate
+                %p Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, elementum vel, cursus eleifend, elit.
+                %a.info-btn{:href => "#"} Read more
+      .align-center
+        %a.btn{:href => "#"} View All Practice Areas
 / Page section
-.page-section-bg2.half-bg-col.two-cols
+.page-section-bg2.half-bg-col
   .img-col-left
-    .col-bg.left-bg{"data-bg" => "#{asset_path 'stock/960x560_bg1.jpg'} "}
-  .img-col-right
-    .col-bg.right-bg{"data-bg" => "#{asset_path 'stock/960x560_bg2.jpg'} "}
-  .container.extra2
+    .col-bg{"data-bg" => "#{asset_path 'stock/960x840_img1.jpg'}"}
+  .container.extra
     .row
-      .col-md-6.col-sm-12.left-col
-        .pre-title Helping Where It Counts
+      .col-md-6
+      .col-md-6
+        .pre-title Why Choose Hicks  Hynson
         %h2.section-title
-          Successful Case Results
+          3 Reasons to Hire Us
           %span.item-divider-3.style-3
-        %p
-          Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit
-          %br/
-          amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris
-          %br/
-          fermentum dictum magna. Sed laoreet aliquam leo.
-        %a.btn{:href => "#"} More Case Results
-      .col-md-6.col-sm-12.right-col
-        .icons-box.price-box.align-center.style-1
-          .flex-row.fx-col-2
-            / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-            .icons-wrap
-              .icons-item
-                .item-box
-                  %h2.price $27M
-                  %p Settlement Won for Injured Worker
-            / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-            .icons-wrap
-              .icons-item
-                .item-box
-                  %h2.price $22M
-                  %p Settlement Won for Injured Worker
-            / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-            .icons-wrap
-              .icons-item
-                .item-box
-                  %h2.price $19M
-                  %p Settlement Won for Injured Worker
-            / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
-            .icons-wrap
-              .icons-item
-                .item-box
-                  %h2.price $13M
-                  %p Settlement Won for Injured Worker
+        .icons-box.style-2
+          .row.flex-row
+            .col-sm-12
+              / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+              .icons-wrap
+                .icons-item
+                  .item-box
+                    %i.licon-balance
+                    %h5.icons-box-title
+                      %a{:href => "#"} Experienced
+                    %p Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit.
+            .col-sm-12
+              / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+              .icons-wrap
+                .icons-item
+                  .item-box
+                    %i.licon-man
+                    %h5.icons-box-title
+                      %a{:href => "#"} FOCUSED ON YOU
+                    %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.
+            .col-sm-12
+              / - - - - - - - - - - - - - Icon Box Item - - - - - - - - - - - - - - - -
+              .icons-wrap
+                .icons-item
+                  .item-box
+                    %i.licon-briefcase
+                    %h5.icons-box-title
+                      %a{:href => "#"} REPUTATION
+                    %p Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus.
 / Page section
-.page-section.no-bts
-  .content-element5
-    .container
+.page-section-bg2.green.half-bg-col
+  .img-col-right
+    .col-bg{"data-bg" => "#{asset_path 'stock/960x644_img1.jpg'}"}
+  .container.extra
+    .row
+      .col-md-6
+        .pre-title About Us
+        %h2.section-title
+          Who We Are
+          %span.item-divider-3.style-3
+        %h5.sub-title Experience You Need. Results You Want.
+        %p.section-text Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit.
+        %a.btn{:href => "#"} More About Us
+      .col-md-6
+/ page section
+.page-section
+  .container
+    .content-element5
       .align-center
         .pre-title Our Team
         %h2.section-title
@@ -141,61 +127,54 @@
           %span.item-divider-3.style-3
         %p
           Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor,
-          %br/
-          dapibus eget, elementum vel, cursus eleifend, elit.
-  .carousel-type-2
-    .team-holder.style-2.owl-carousel.var2{"data-max-items" => "4"}
-      .owl-item
-        / team element
-        .team-item
-          .team-member
-            .member-photo
-              %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo1.jpg'} "}/
-            .team-desc.overlay
-              .member-info
-                %h5.member-name
-                  %a{:href => "#"} Sam Hicks
-                %h6.member-position Personal Injury
-                %a.btn{:href => "#"} View Profile
-      .owl-item
-        / team element
-        .team-item
-          .team-member
-            .member-photo{:href => "#"}
-              %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo2.jpg'} "}/
-            .team-desc.overlay
-              .member-info
-                %h5.member-name
-                  %a{:href => "#"} Bradley Hynson
-                %h6.member-position Estate Planning
-                %a.btn{:href => "#"} View Profile
-      .owl-item
-        / team element
-        .team-item
-          .team-member
-            .member-photo{:href => "#"}
-              %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo3.jpg'} "}/
-            .team-desc.overlay
-              .member-info
-                %h5.member-name
-                  %a{:href => "#"} Jessica Priston
-                %h6.member-position Criminal Defense
-                %a.btn{:href => "#"} View Profile
-      .owl-item
-        / team element
-        .team-item
-          .team-member
-            .member-photo{:href => "#"}
-              %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo4.jpg'} "}/
-            .team-desc.overlay
-              .member-info
-                %h5.member-name
-                  %a{:href => "#"} Marta Healy
-                %h6.member-position Business &amp; Real Estate
-                %a.btn{:href => "#"} View Profile
-/ Page section
-.page-section-bg2.parallax-section{"data-bg" => "#{asset_path 'stock/1920x1000_bg1.jpg'} "}
-  .container.extra
+          %br dapibus eget, elementum vel, cursus eleifend,
+    .carousel-type-2
+      .owl-carousel.team-holder.style-3{"data-item-margin" => "30", "data-max-items" => "3"}
+        / owl item
+        .owl-item
+          / team member
+          .team-item
+            .team-member
+              %a.member-photo{:href => "#"}
+                %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo1.jpg'}"}
+                .team-desc
+                  .member-info
+                    %h5.member-name
+                      %a{:href => "#"} Sam Hicks
+                    %h6.member-position Personal Injury
+                    %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat
+                    %a.btn{:href => "#"} View Profile
+        / owl item
+        .owl-item
+          / team member
+          .team-item
+            .team-member
+              %a.member-photo{:href => "#"}
+                %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo2.jpg'}"}
+                .team-desc
+                  .member-info
+                    %h5.member-name
+                      %a{:href => "#"} Bradley Hynson
+                    %h6.member-position Estate Planning
+                    %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat
+                    %a.btn{:href => "#"} View Profile
+        / owl item
+        .owl-item
+          / team member
+          .team-item
+            .team-member
+              %a.member-photo{:href => "#"}
+                %img{:alt => "", :src => "#{asset_path 'stock/480x532_photo3.jpg'}"}
+                .team-desc
+                  .member-info
+                    %h5.member-name
+                      %a{:href => "#"} Jessica Priston
+                    %h6.member-position Criminal Defense
+                    %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat
+                    %a.btn{:href => "#"} View Profile
+/ page section
+.page-section-bg{"data-bg" => "#{asset_path 'stock/1920x1000_bg2.jpg'}"}
+  .container
     .content-element5
       .align-center
         .pre-title Testimonials
@@ -203,15 +182,15 @@
           What Our Clients Say
           %span.item-divider-3.style-3
     / - - - - - - - - - - - - Owl-Carousel - - - - - - - - - - - - - - -
-    .carousel-type-1
-      .owl-carousel.testimonial-holder{"data-autoplay" => "true", "data-item-margin" => "60", "data-max-items" => "2"}
+    .carousel-type-1.style-2
+      .owl-carousel.testimonial-holder.align-center{"data-autoplay" => "true", "data-item-margin" => "30", "data-max-items" => "1"}
         / Slide
         .item-carousel
           / Carousel Item
           / - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - -
           .testimonial
             %blockquote
-              %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh.
+              %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus.
               .author Mark Johnson, Real Estate Client
           / /Carousel Item
         / /Slide
@@ -221,17 +200,7 @@
           / - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - -
           .testimonial
             %blockquote
-              %p Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.
-              .author John Doe, Real Estate Client
-          / /Carousel Item
-        / /Slide
-        / Slide
-        .item-carousel
-          / Carousel Item
-          / - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - -
-          .testimonial
-            %blockquote
-              %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh.
+              %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus.
               .author Mark Johnson, Real Estate Client
           / /Carousel Item
         / /Slide
@@ -241,177 +210,140 @@
           / - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - -
           .testimonial
             %blockquote
-              %p Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.
-              .author John Doe, Real Estate Client
-          / /Carousel Item
-        / /Slide
-        / Slide
-        .item-carousel
-          / Carousel Item
-          / - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - -
-          .testimonial
-            %blockquote
-              %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh.
+              %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus.
               .author Mark Johnson, Real Estate Client
-          / /Carousel Item
-        / /Slide
-        / Slide
-        .item-carousel
-          / Carousel Item
-          / - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - -
-          .testimonial
-            %blockquote
-              %p Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.
-              .author John Doe, Real Estate Client
           / /Carousel Item
         / /Slide
       .align-center
-        %a.btn{:href => "#"} More Testimonials
-/ Page section
-.page-section.half-bg-col.two-cols
-  .img-col-left
-    .col-bg.page-section-bg.left-bg-2
+        %a.btn.btn-style-2{:href => "#"} More Testimonials
+/ page section
+.page-section-bg.type-2.parallax-section{"data-bg" => "#{asset_path 'stock/1920x800_bg1.jpg'}"}
+  .container.extra
+    .row.counter-wrap.style-2
+      .col-lg-3.col-md-3.col-xs-6
+        .counter
+          .count-item
+            %span.licon-hammer2
+            %h3.timer.count-number{"data-speed" => "1500", "data-to" => "50"} 0
+          %p Years of Experience
+      .col-lg-3.col-md-3.col-xs-6
+        .counter
+          .count-item
+            %span.licon-happy
+            %h3.timer.count-number{"data-speed" => "1500", "data-to" => "389"} 0
+          %p Satisfied Clients
+      .col-lg-3.col-md-3.col-xs-6
+        .counter
+          .count-item
+            %span.licon-group-work
+            %h3.timer.count-number{"data-speed" => "1500", "data-to" => "15"} 0
+          %p Attorneys in Our Team
+      .col-lg-3.col-md-3.col-xs-6
+        .counter
+          .count-item
+            %span.licon-trophy2
+            %h3.timer.count-number{"data-speed" => "1500", "data-to" => "227"} 0
+          %p Successful Case Results
+/ page section
+.page-section
   .container
-    .row
-      .col-md-6.col-sm-12.left-col-2
-        .pre-title Frequently Asked Questions
-        %h2.section-title
-          Questions &amp; Answers
-          %span.item-divider-3.style-3
-        .accordion.style-2
-          / accordion item
-          .accordion-item
-            %h5.a-title Ut enim ad minima veniam, quis nostrum?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-          / accordion item
-          .accordion-item
-            %h5.a-title.active Donec sagittis euismod purus?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-          / accordion item
-          .accordion-item
-            %h5.a-title Aliquam dapibus tincidunt metus?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-          / accordion item
-          .accordion-item
-            %h5.a-title Vestibulum ante ipsum primis in faucibus?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-          / accordion item
-          .accordion-item
-            %h5.a-title Ut pharetra augue nec augue?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-          / accordion item
-          .accordion-item
-            %h5.a-title Donec eget tellus non erat lacinia fermentum?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-          / accordion item
-          .accordion-item
-            %h5.a-title Mauris accumsan nulla vel diam?
-            .a-content
-              %p
-                Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-        %a.btn{:href => "#"} More Questions &amp; Answers
-      .col-md-6.col-sm-12.right-col-2
+    .content-element5
+      .align-center
         .pre-title From the blog
         %h2.section-title
           Latest Articles
           %span.item-divider-3.style-3
-        .entry-box.entry-small
+    .entry-box
+      .flex-row.row
+        .col-sm-4.col-xs-6
           / entry
           .entry
             / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
             .thumbnail-attachment
               %a{:href => "#"}
-                %img{:alt => "", :src => "#{asset_path 'stock/233x168_img1.jpg'} "}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .entry-meta
-                %time.entry-date{:datetime => "2018-10-24"} 24 October 2018
-                %a.entry-cat{:href => "#"} news
-              %h5.entry-title
-                %a{:href => "#"} Ut Enim Ad Minima Veniam, Quis Nostrum
+                %img{:alt => "", :src => "#{asset_path 'stock/360x252_img1.jpg'}"}/
+              / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+              .entry-body
+                .entry-meta
+                  %time.entry-date{:datetime => "2018-10-24"} 24 October 2018
+                  %a.entry-cat{:href => "#"} news
+                %h5.entry-title
+                  %a{:href => "#"} Ut Enim Ad Minima Veniam, Quis Nostrum
+        .col-sm-4.col-xs-6
           / entry
           .entry
             / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
             .thumbnail-attachment
               %a{:href => "#"}
-                %img{:alt => "", :src => "#{asset_path 'stock/233x168_img2.jpg'} "}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .entry-meta
-                %time.entry-date{:datetime => "2018-10-21"} 21 October 2018
-                %a.entry-cat{:href => "#"} case studies
-              %h5.entry-title
-                %a{:href => "#"} Aliquam Erat Volutpat Duis Ac Turpis
+                %img{:alt => "", :src => "#{asset_path 'stock/360x252_img2.jpg'}"}/
+              / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+              .entry-body
+                .entry-meta
+                  %time.entry-date{:datetime => "2018-10-21"} 21 October 2018
+                  %a.entry-cat{:href => "#"} case studies
+                %h5.entry-title
+                  %a{:href => "#"} Aliquam Erat Volutpat Duis Ac Turpis
+        .col-sm-4.col-xs-6
           / entry
           .entry
             / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
             .thumbnail-attachment
               %a{:href => "#"}
-                %img{:alt => "", :src => "#{asset_path 'stock/233x168_img3.jpg'} "}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .entry-meta
-                %time.entry-date{:datetime => "2018-10-15"} 15 October 2018
-                %a.entry-cat{:href => "#"} events
-              %h5.entry-title
-                %a{:href => "#"} Fusce Euismod Consequat Ante Consectetuer
+                %img{:alt => "", :src => "#{asset_path 'stock/360x252_img3.jpg'}"}/
+              / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+              .entry-body
+                .entry-meta
+                  %time.entry-date{:datetime => "2018-10-15"} 15 October 2018
+                  %a.entry-cat{:href => "#"} events
+                %h5.entry-title
+                  %a{:href => "#"} Fusce Euismod Consequat Ante Consectetuer
+      .align-center
         %a.btn{:href => "#"} More News
 / Page section
-.page-section-bg2.parallax-section{"data-bg" => "#{asset_path 'stock/1920x1000_bg3.jpg'} "}
-  .container
+.page-section.half-bg-col.two-cols
+  .img-col-left
+    .col-bg.left-bg{"data-bg" => "#{asset_path 'stock/960x616_bg1.jpg'}"}
+  .img-col-right
+    .col-bg.right-bg{"data-bg" => "#{asset_path 'stock/960x616_bg2.jpg'}"}
+  .container.extra
     .row
-      .col-md-4.col-sm-12
+      .col-md-6.col-sm-12.left-col
+        .pre-title Helping Where It Counts
         %h2.section-title
-          Do You Have a Case?
+          Areas Served
           %span.item-divider-3.style-3
-        %p Get your free case review within 24 hours. All Fields Required.
-      .col-md-8.col-sm-12
-        %form#contact-form.contact-form
-          .flex-row
-            .col-sm-4
-              %input{:name => "cf-name", :placeholder => "Name *", :required => "", :type => "text"}/
-            .col-sm-4
-              %input{:name => "cf-phone", :placeholder => "Phone *", :required => "", :type => "tel"}/
-            .col-sm-4
-              %input{:name => "cf-email", :placeholder => "Email *", :required => "", :type => "email"}/
-            .col-sm-12
-              %textarea{:name => "cf-message", :placeholder => "Message *", :required => "", :rows => "3"}
-            .col-sm-12
-              %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Submit
-/ Page section
-.page-section.type-2
-  .carousel-type-2
-    .owl-carousel.brand-box{"data-item-margin" => "0", "data-max-items" => "5"}
-      / owl item
-      .brand-item
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand1.jpg'} "}/
-      / owl item
-      .brand-item
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand2.jpg'} "}/
-      / owl item
-      .brand-item
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand3.jpg'} "}/
-      / owl item
-      .brand-item
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand4.jpg'} "}/
-      / owl item
-      .brand-item
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand5.jpg'} "}/
-/ - - - - - - - - - - - - end Content - - - - - - - - - - - - - - -
+        %p.section-text
+          Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit
+          %br
+            amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris
+            %br fermentum dictum magna. Sed laoreet aliquam leo.
+    .row
+      .col-xs-6
+        %ul.custom-list.type-1
+          %li
+            %a{:href => "#"} Hudson County
+          %li
+            %a{:href => "#"} Hoboken
+          %li
+            %a{:href => "#"} Union City
+      .col-xs-6
+        %ul.custom-list.type-1
+          %li
+            %a{:href => "#"} Bayonne
+          %li
+            %a{:href => "#"} North Bergen
+          %li
+            %a{:href => "#"} West New York
+.page-section-bg2.col-md-6.col-sm-12.right-col
+  .align-center
+    .pre-title We are here to fight for you
+    %h2.section-title
+      Call Us Today
+      %span.item-divider-3.style-3
+    .content-element3
+      %ul.contact-info
+        %li.info-item
+          .item-info
+            %span{:content => "telephone=no"} 987.654.3210
+    .content-element3 OR
+    %a.btn.btn-big.btn-style-5{:href => "#"} Request Free Consultation
