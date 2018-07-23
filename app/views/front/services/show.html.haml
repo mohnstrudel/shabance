@@ -1,0 +1,72 @@
+.container
+  .row
+    %main#main.col-md-8.col-sm-12
+      .content-element2
+        .content-element3
+          =image_tag @service.avatar.variant(resize: '750x420')
+          %h5.sub-title
+            %b=@service.title
+          %p=@service.leading_description
+
+          -@service.blocks.each do |service_block|
+            %p=service_block.block_body
+          
+          %p=@service.ending_description
+
+        -if @related_cases.any?
+          %h3
+            %b Реализованные кейсы
+          .icons-box.price-box.style-1.type-3.small-size
+            .flex-row.fx-col-3
+              -@related_cases.each do |related_case|
+                .icons-wrap
+                  .icons-item
+                    .item-box
+                      %h3.price=related_case.price
+                      %p
+                        =truncate(related_case.description, length: 100)
+                        %br Female Offshore Worker
+                        %a.info-btn{:href => "#"} Узнать больше
+        -if @related_services.any?
+          %h3
+            %b Похожие услуги
+          .icons-box.price-box.style-1.type-3.small-size
+            .flex-row.fx-col-3
+              -@related_services.each do |related_service|
+                .icons-wrap
+                  .icons-item
+                    .item-box
+                      %p
+                        =related_service.title
+                        %a.info-btn{:href => "#"} Узнать больше
+    %aside#sidebar.sidebar.col-md-4.col-sm-12
+      / Widget
+      .widget.with-bg
+        %h5.widget-title Наши отрасли
+        -@categories.each do |category|
+          %ul.toggle-list
+            %li
+              %a.toggle-btn{:href => "javascript:void(0)"}=category.title
+              %ul.toggle-item
+                -category.subcategories.each do |subcategory|
+                  %li
+                    %a{:href => "#"}=subcategory.title
+
+      / Widget
+      .widget.with-bg2
+        %h5.widget-title Свяжитесь с нами сегодня
+        %p.text-size-small
+          Мы рассмотрим ваш случай в течении 24 часов.
+          Все поля обязательны.
+        %form#contact-form.contact-form
+          .flex-row
+            .col-sm-12
+              %input{:name => "cf-name", :placeholder => "Имя *", :type => "text"}
+            .col-sm-12
+              %input{:name => "cf-phone", :placeholder => "Тел. *", :type => "tel"}
+            .col-sm-12
+              %input{:name => "cf-email", :placeholder => "Эл. почта *", :type => "email"}
+            .col-sm-12
+              %textarea{:name => "cf-message", :placeholder => "Сообщение *", :rows => "3"}
+            .col-sm-12
+              %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Отправить

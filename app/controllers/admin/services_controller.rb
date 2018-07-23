@@ -45,6 +45,6 @@ class Admin::ServicesController < AdminController
 
   def service_params
     # params.require(:service).permit(service.attribute_names.map(&:to_sym).push(barcodes_attributes: [:id, :value, :_destroy, :service_id]).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
-    params.require(:service).permit(Service.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :service_id ]).push(tag_list:[]))
+    params.require(:service).permit(Service.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :service_id ]).push(tag_list:[]).push(:avatar))
   end
 end

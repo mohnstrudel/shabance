@@ -1296,6 +1296,8 @@ button.search-button:before{content: "\e922";}
   display: none;
   overflow-x: hidden;
   overflow-y: auto;
+/*Добавлено кастомно 22/07*/
+  z-index: 100;
 }
 
   .case-popup .popup-inner{

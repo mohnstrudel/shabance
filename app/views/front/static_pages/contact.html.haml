@@ -1,0 +1,81 @@
+.page-section.type-3
+  .container
+    %ul.contact-info.style-3.flex-row.fx-col-3
+      %li.info-item
+        %i.licon-telephone
+        .item-info
+          %span{:content => "telephone=no"}=@settings.try(:phone)
+      %li.info-item
+        %i.licon-at-sign
+        .item-info
+          %a{:href => "mailto:#{@settings.try(:email)}"}=@settings.try(:email)
+      %li.info-item
+        %i.licon-share2
+        .item-info
+          %ul.social-icons
+            %li
+              %a{:href => @settings.try(:facebook)}
+                %i.icon-facebook
+            %li
+              %a{:href => @settings.try(:twitter)}
+                %i.icon-twitter
+            %li
+              %a{:href => @settings.try(:vk)}
+                %i.icon-vkontakte
+            %li
+              %a{:href => @settings.try(:linkedin)}
+                %i.icon-linkedin-3
+.page-section-bg.half-bg-col
+  .img-col-right
+    .col-bg
+      / Google map
+      .map-section
+        #googleMap.map-container
+  .container
+    .row
+      .col-md-6
+        %h2.section-title
+          Наш офис в Москве
+          %span.item-divider-3.style-3
+        .content-element5
+          .our-info
+            %p
+              %i.licon-map-marker>
+              =@settings.try(:address)
+            %p{:content => "telephone=no"}
+              %i.licon-telephone>
+              =@settings.try(:phone)
+            -@additional_phones.each do |additional_phone|
+              %p{:content => "telephone=no"}
+                %i.licon-telephone>
+                =additional_phone.value
+            %p
+              %i.licon-clock3>
+              -@settings.opening_hours.each do |oh|
+                ="#{oh.title} : #{oh.value}"
+          %a.info-btn{:href => "https://www.google.com/maps/dir//2032+S+Elliott+Ave,+Aurora,+MO+65605/@36.9487043,-93.7878472,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x87cf4b1a194c90e1:0xba30bfe0c0a857c!2m2!1d-93.7178072!2d36.9487249"} Get Directions
+      .col-md-6
+
+=render 'front/static_pages/contact_pages/additional_offices'
+
+.page-section-bg2.parallax-section{"data-bg" => "images/1920x1000_bg3.jpg"}
+  .container
+    .row
+      .col-sm-4
+        %h2.section-title
+          Как мы можем вам помочь?
+          %span.item-divider-3.style-3
+        %p Ваш случай будет рассмотрен в течении 24 часов. Все поля обязательны.
+      .col-sm-8
+        %form#contact-form.contact-form
+          .flex-row
+            .col-sm-4
+              %input{:name => "cf-name", :placeholder => "Имя *", :required => "", :type => "text"}/
+            .col-sm-4
+              %input{:name => "cf-phone", :placeholder => "Телефон *", :required => "", :type => "tel"}/
+            .col-sm-4
+              %input{:name => "cf-email", :placeholder => "Эл.почта *", :required => "", :type => "email"}/
+            .col-sm-12
+              %textarea{:name => "cf-message", :placeholder => "Сообщение *", :required => "", :rows => "3"}
+            .col-sm-12
+              %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Отправить

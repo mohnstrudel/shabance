@@ -12,6 +12,8 @@ class Service < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  has_one_attached :avatar
+
   private
 
   def set_slug

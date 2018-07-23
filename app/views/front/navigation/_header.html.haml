@@ -15,7 +15,7 @@
       .flex-row.flex-justify
         %p
           %i.licon-map-marker
-          8901 Marmora Road, Glasgow, D04 89GR
+          =Setting.first.try(:address)
         .socials
           .lang-area
             %a.current{:href => "#"} En
@@ -46,9 +46,9 @@
         %ul.contact-info.style-2
           %li.info-item.with-icon
             %i.licon-telephone
-            .pre call Us Today
+            .pre Позвоните сегодня
             .item-info
-              %span{:content => "telephone=no"} 987.654.3210
+              %span{:content => "telephone=no"}=@settings.try(:phone)
   / - - - - - - - - - - - / Mobile Menu - - - - - - - - - - - - -
   / main menu
   .menu-holder
@@ -58,167 +58,32 @@
           / - - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - - -
           %nav#main-navigation.main-navigation
             %ul#menu.clearfix
-              %li.current.dropdown
-                %a{:href => "#"} Home
-                / sub menu
-                .sub-menu-wrap
-                  %ul
-                    %li
-                      %a{:href => "index.html"} Homepage Layout 1
-                    %li
-                      %a{:href => "home_2.html"} Homepage Layout 2
-                    %li.current
-                      %a{:href => "home_3.html"} Homepage Layout 3
+              %li.current
+                %a{:href => root_path} Главная
               %li.dropdown.has-megamenu
-                %a{:href => "#"} Practice Areas
+                %a{:href => "#"} Услуги
                 / sub menu
                 .sub-menu-wrap.mega-menu.flex-row
-                  %ul
-                    %li
-                      %a{:href => "practice_area_v1.html"} Practice Areas Overview v1
-                    %li
-                      %a{:href => "practice_area_v2.html"} Practice Areas Overview v2
-                    %li
-                      %a{:href => "practice_area_v3.html"} Practice Areas Overview v3
-                    %li
-                      %a{:href => "practice_single.html"} Single Service Page
-                  %ul
-                    %li
-                      %a{:href => "practice_area_v1.html"} Personal Injury
-                    %li
-                      %a{:href => "practice_area_v2.html"} Estate Planning
-                    %li
-                      %a{:href => "practice_area_v3.html"} Maritime &amp; Offshore Injury
-                    %li
-                      %a{:href => "practice_single.html"} Insurance Claims
-                  %ul
-                    %li
-                      %a{:href => "practice_area_v1.html"} Business &amp; Real Estate
-                    %li
-                      %a{:href => "practice_area_v2.html"} Medical/Pharmaceutical Injury
-                    %li
-                      %a{:href => "practice_area_v3.html"} Elder Law
-                    %li
-                      %a{:href => "practice_single.html"} Criminal Defense
+                  -Category.top_level.in_groups_of(4, false).each do |category_group|
+                    %ul
+                      -category_group.each do |category|
+                        %li
+                          %a{:href => category_subcategories_path(category)}=category.title
               %li.dropdown
-                %a{:href => "#"} Attorneys
+                %a{:href => "#"} Компания
                 / sub menu
                 .sub-menu-wrap
                   %ul
                     %li
-                      %a{:href => "attorneys_list_v1.html"} Attorneys List v1
+                      %a{:href => cases_path} Реализованные кейсы
                     %li
-                      %a{:href => "attorneys_list_v2.html"} Attorneys List v2
+                      %a{:href => "testimonials.html"} Статьи
                     %li
-                      %a{:href => "attorney_profile_v1.html"} Attorney Profile Page v1
-                    %li
-                      %a{:href => "attorney_profile_v2.html"} Attorney Profile Page v2
-              %li.dropdown
-                %a{:href => "#"} Pages
-                / sub menu
-                .sub-menu-wrap
-                  %ul
-                    %li
-                      %a{:href => "about.html"} About Us
-                    %li
-                      %a{:href => "testimonials.html"} Testimonials
-                    %li
-                      %a{:href => "case_v1.html"} Case Result v1
-                    %li
-                      %a{:href => "case_v2.html"} Case Result v2
-                    %li
-                      %a{:href => "shortcodes.html"} Shortcodes
-                    %li
-                      %a{:href => "typography.html"} Typography
-                    %li
-                      %a{:href => "404_page.html"} 404 Page
-                    %li
-                      %a{:href => "coming_soon.html"} Coming Soon Page
-              %li.dropdown
-                %a{:href => "#"} Blog
-                / sub menu
-                .sub-menu-wrap
-                  %ul
-                    %li
-                      %a{:href => "blog_classic.html"} Classic
-                    %li
-                      %a{:href => "blog_masonry.html"} Masonry
-                    %li
-                      %a{:href => "blog_single.html"} Single Blog Post
-              %li.dropdown
-                %a{:href => "#"} Contact Us
-                / sub menu
-                .sub-menu-wrap
-                  %ul
-                    %li
-                      %a{:href => "contact_v1.html"} Contact Us v1
-                    %li
-                      %a{:href => "contact_v2.html"} Contact Us v2
+                      %a{:href => "case_v1.html"} Блоги
+              %li
+                %a{:href => contact_path} Контакты
           / - - - - - - - - - - - - end Navigation - - - - - - - - - - - - - - -
         .search-holder
-          %a.btn.btn-big.btn-style-2{:href => "#"} Free Consultation
+          %a.btn.btn-big.btn-style-2{:href => "#"} Бесплатная консультация
           %button.search-button{:type => "button"}
 / - - - - - - - - - - - - end Header - - - - - - - - - - - - - - -
-/ - - - - - - - - - - - - - Revolution Slider - - - - - - - - - - - - - - - -
-.rev-slider-wrapper
-  #rev-slider.rev-slider{"data-version" => "5.0"}
-    %ul
-      %li{"data-transition" => "fade"}
-        %img.rev-slidebg{:alt => "", :src => "#{asset_path 'stock/1920x925_bg1.jpg'}"}/
-        / - - - - - - - - - - - - - Layer 1 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme.scaption-white-medium{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":150,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "['0','0','0','0']", "data-responsive_offset" => "on", "data-voffset" => "-200", "data-whitespace" => "nowrap", "data-x" => "['center','center','center','center']", "data-y" => "['middle','middle','middle','middle']"}
-          Insurer Denying Your Claim?
-        / - - - - - - - - - - - - - End of Layer 1 - - - - - - - - - - - - - - - -
-        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme.scaption-white-large2{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "['0','0','0','0']", "data-responsive_offset" => "on", "data-voffset" => "-125", "data-whitespace" => "nowrap", "data-x" => "['center','center','center','center']", "data-y" => "['middle','middle','middle','middle']"}
-          WE CAN HELP!
-        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
-        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "['0','0','0','0']", "data-responsive_offset" => "on", "data-voffset" => "-20", "data-whitespace" => "nowrap", "data-x" => "['center','center','center','center']", "data-y" => "['middle','middle','middle','middle']"}
-          %a.btn.btn-big.btn-style-5{:href => "#"} Contact Us Today!
-        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
-      %li{"data-transition" => "fade"}
-        %img.rev-slidebg{:alt => "", :src => "#{asset_path 'stock/1920x925_bg2.jpg'}"}/
-        / - - - - - - - - - - - - - Layer 1 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme.scaption-dark-large{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":150,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "30", "data-responsive_offset" => "on", "data-voffset" => "-170", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
-          Billions of Dollars
-          %br/
-          Won For Our Clients
-        / - - - - - - - - - - - - - End of Layer 1 - - - - - - - - - - - - - - - -
-        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "30", "data-responsive_offset" => "on", "data-voffset" => "-50", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
-          %a.btn.btn-big.btn-style-5{:href => "#"} Request Free Consultation
-        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
-      %li{"data-transition" => "fade"}
-        %img.rev-slidebg{:alt => "", :src => "#{asset_path 'stock/1920x925_bg3.jpg'}"}/
-        / - - - - - - - - - - - - - Layer 1 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme.scaption-white-large{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":150,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "750", "data-responsive_offset" => "on", "data-voffset" => "-180", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
-          When Experience
-          %br/
-          Matters Most!
-        / - - - - - - - - - - - - - End of Layer 1 - - - - - - - - - - - - - - - -
-        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme.scaption-white-small{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":450,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "750", "data-responsive_offset" => "on", "data-voffset" => "-80", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
-          %p
-            Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi,
-            %br/
-            aliquet sit amet, euismod in,auctor ut, ligula.
-        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
-        / - - - - - - - - - - - - - Layer 2 - - - - - - - - - - - - - - - -
-        .tp-caption.tp-resizeme{"data-elementdelay" => "0.05", "data-frames" => "[{\"delay\":750,\"speed\":2000,\"frame\":\"0\",\"from\":\"y:50px;opacity:0;\",\"to\":\"o:1;\",\"ease\":\"Power3.easeOut\"},{\"delay\":\"wait\",\"speed\":1000,\"frame\":\"999\",\"to\":\"y:[175%];\",\"mask\":\"x:inherit;y:inherit;s:inherit;e:inherit;\",\"ease\":\"Power2.easeInOut\"}]", "data-hoffset" => "750", "data-responsive_offset" => "on", "data-voffset" => "20", "data-whitespace" => "nowrap", "data-x" => "['left','left','left','left']", "data-y" => "['middle','middle','middle','middle']"}
-          %a.btn.btn-big.btn-style-2{:href => "#"} Contact Us Today!
-        / - - - - - - - - - - - - - End of Layer 2 - - - - - - - - - - - - - - - -
-  .brand-holder
-    .container.extra
-      .flex-row.flex-justify.flex-center
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand1.png'}"}/
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand2.png'}"}/
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand3.png'}"}/
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand4.png'}"}/
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{asset_path 'stock/brand5.png'}"}/
-/ - - - - - - - - - - - - - End of Slider - - - - - - - - - - - - - - - -

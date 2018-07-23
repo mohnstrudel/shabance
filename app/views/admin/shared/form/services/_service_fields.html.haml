@@ -1,3 +1,25 @@
+-if object.respond_to?(:avatar)
+  .form-group
+    %label.col-sm-2.control-label
+      Главное изображение
+    .col-sm-8
+      .fileinput.fileinput-new.input-group{"data-provides" => "fileinput"}
+        .form-control{"data-trigger" => "fileinput"}
+          %i.glyphicon.glyphicon-file.fileinput-exists
+          %span.fileinput-filename
+        %span.input-group-addon.btn.btn-default.btn-file
+          %span.fileinput-new
+            Выбрать файл
+          %span.fileinput-exists
+            Поменять
+          =f.file_field :avatar
+          
+        %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Удалить
+    .col-sm-2
+      -if object.avatar.attached?
+        / -if object.logo.url(:mini_thumb).present?
+        =image_tag object.avatar.variant(resize: "128x128")
+  .hr-line-dashed
 -if object.respond_to?(:service_type)
   .form-group
     %label.col-lg-2.control-label

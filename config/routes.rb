@@ -4,9 +4,17 @@ Rails.application.routes.draw do
 
   scope module: :front do
     root "static_pages#home"
+    get 'contact', to: 'static_pages#contact'
     resources :categories do
-      resources :subcategories
+      resources :subcategories do
+        resources :services
+      end
     end
+
+    resources :cases 
+
+    # resources :services
+
   end
 
   namespace :admin do

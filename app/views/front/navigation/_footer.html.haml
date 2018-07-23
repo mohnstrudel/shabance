@@ -9,65 +9,61 @@
             .content-element4
               %ul.contact-info.style-2
                 %li.info-item
-                  .pre call Us Today
+                  .pre Звоните сегодня
                   .item-info
-                    %span{:content => "telephone=no"} 987.654.3210
+                    %span{:content => "telephone=no"}=@settings.try(:phone)
             %p
-              8901 Marmora Road, Glasgow, D04 89GR.
+              =@settings.try(:address)
               %br/
-              %span Phone:
-              +1 800 559 6580
+              %span Тел.:
+              =@settings.try(:phone)
               %br/
-              %span Fax:
-              +1 800 889 9898
+              %span Доп.:
+              -@additional_phones.each do |additional_phone|
+                =additional_phone.value
               %br/
-              %span Opening Hours:
-              Mon-Fri 8am- 5pm / Phones are open 24/7
-            %a.info-btn{:href => "#"} Get Directions
+              %span Часы открытия:
+              -@settings.opening_hours.each do |oh|
+                ="#{oh.title} : #{oh.value}"
+            %a.info-btn{:href => "#"} Найти нас
         .col-md-3.col-sm-12
           .widget
-            %h6.widget-title Quick Links
+            %h6.widget-title Быстрые ссылки
             %ul.info-links.v-type
               %li
-                %a{:href => "#"} Home
+                %a{:href => "#"} Главная
               %li
-                %a{:href => "#"} About
+                %a{:href => "#"} О нас
               %li
-                %a{:href => "#"} Practice Areas
+                %a{:href => "#"} Услуги
               %li
-                %a{:href => "#"} Attorneys
+                %a{:href => "#"} Адвокаты
               %li
-                %a{:href => "#"} Blog
-              %li.dropdown
-                %a{:href => "#"} Contact Us
-                / sub menu
-                .sub-menu-wrap
-                  %ul
-                    %li
-                      %a{:href => "contact_v1.html"} Contact Us v1
-                    %li
-                      %a{:href => "contact_v2.html"} Contact Us v2
+                %a{:href => "#"} Блог
+              %li
+                %a{:href => "#"} Контакты
+                
         .col-md-4.col-sm-12
           .widget
-            %h6.widget-title Newsletter Sign Up
+            %h6.widget-title Подпишитесь на рассылку
             %form#newsletter.newsletter
               %input{:name => "newsletter-email", :placeholder => "Enter your email address", :type => "email"}/
               %button{"data-type" => "submit", :type => "submit"}
                 %i.licon-envelope
           .widget
-            %h6.widget-title Stay Connected
+            %h6.widget-title Оставайтесь с нами на связи
             %ul.social-icons
               %li
-                %a{:href => "#"}
+                %a{:href => @settings.try(:facebook)}
                   %i.icon-facebook
               %li
-                %a{:href => "#"}
+                %a{:href => @settings.try(:twitter)}
                   %i.icon-twitter
               %li
-                %a{:href => "#"}
-                  %i.icon-gplus-3
+                %a{:href => @settings.try(:vk)}
+                  %i.icon-vkontakte
               %li
-                %a{:href => "#"}
+                %a{:href => @settings.try(:linkedin)}
                   %i.icon-linkedin-3
     .copyright
-      %p Copyright Hicks &amp; Hynson © 2018. All Rights Reserved.
+      %p Copyright Шабансебле © 2018. Все права зарезервированы.

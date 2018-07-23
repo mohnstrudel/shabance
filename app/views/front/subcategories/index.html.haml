@@ -1,0 +1,19 @@
+.services
+  / - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - -
+  #options
+    #filters.isotope-nav
+      %button.is-checked{"data-filter" => "*"} Все
+      -@subcategories.each do |subcategory|
+        %button{"data-filter" => ".category_#{subcategory.id}"}=subcategory.title
+      
+  / - - - - - - - - - - - - - End of Filter - - - - - - - - - - - - - - - -
+  .isotope.six-collumn.clearfix.portfolio-holder.full-width{"data-isotope-options" => "{\"itemSelector\" : \".item\",\"layoutMode\" : \"masonry\",\"transitionDuration\":\"0.7s\",\"masonry\" : {\"columnWidth\":\".item\"}}"}
+    -@services.each do |service|
+      / Service column
+      -@random = rand(3)
+      .item{class: "category_#{service.category_id} item-col#{@random==2 ? '-2':''}"}
+        / Service item
+        %a.service-item.dark{:href => category_subcategory_service_path(@parent_category, service.category, service)}
+          %figure
+            =image_tag service.avatar.variant(resize: @random == 2 ? '640x308': '320x308')
+            %span.service-title=service.title

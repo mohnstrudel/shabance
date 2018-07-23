@@ -1,0 +1,10 @@
+-if @display_breadcrumbs
+  / - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - -
+  .breadcrumbs-wrap.style-2
+    .container
+      %h1.page-title=@title
+      %ul.breadcrumbs
+        %li
+          %a{:href => root_path} Главная
+        %li=@title
+  / - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - -
