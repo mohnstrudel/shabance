@@ -9,6 +9,9 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  mount_uploaders :images, LogoUploader
+  serialize :images, JSON # If you use SQLite, add this line.
+
   private
 
   def set_slug

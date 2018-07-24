@@ -36,6 +36,6 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(Post.attribute_names.map(&:to_sym).push(tag_list:[]))
+    params.require(:post).permit(Post.attribute_names.map(&:to_sym).push(tag_list:[]).push({ images: [] }))
   end
 end

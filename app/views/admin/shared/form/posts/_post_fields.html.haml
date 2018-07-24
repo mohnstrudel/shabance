@@ -5,3 +5,70 @@
     .col-lg-10
       =f.select :post_category_id, PostCategory.all.map { |post_category| [ post_category.title, post_category.id ] }, {}, { class: "form-control m-b" }
   .hr-line-dashed
+
+-if object.respond_to?(:featured)
+  .form-group
+    %label.col-sm-2.control-label
+      Топ запись?
+    .col-sm-10
+      =f.check_box :featured, class: 'form-control'
+      %span.help-block.m-b-none Данная запись всегда (!) будет в самом верху до отключения опции.
+  .hr-line-dashed
+
+-if object.respond_to?(:cite)
+  .form-group
+    %label.col-sm-2.control-label
+      Цитата
+    .col-sm-10
+      =f.text_area :cite, class: 'form-control'
+      %span.help-block.m-b-none Интересная цитата, которая встанет в определённом, красивом формате
+  .hr-line-dashed
+
+-if object.respond_to?(:video)
+  .form-group
+    %label.col-sm-2.control-label
+      Ссылка на видео YouTube
+    .col-sm-10
+      =f.text_field :video, class: 'form-control'
+      %span.help-block.m-b-none Ссылка на видео. Оно всегда будет в приоритете на главной.
+  .hr-line-dashed
+
+-if object.respond_to?(:link)
+  .form-group
+    %label.col-sm-2.control-label
+      Произвольная ссылка
+    .col-sm-10
+      =f.text_field :link, class: 'form-control'
+      %span.help-block.m-b-none Интересная ссылка, которую необходимо выделить.
+  .hr-line-dashed
+
+
+
+-if object.respond_to?(:images)
+  .form-group
+    %label.col-sm-2.control-label
+      Загрузить фото для галереи
+    .col-sm-10
+      .fileinput.fileinput-new.input-group{"data-provides" => "fileinput"}
+        .form-control{"data-trigger" => "fileinput"}
+          %i.glyphicon.glyphicon-file.fileinput-exists
+          %span.fileinput-filename
+        %span.input-group-addon.btn.btn-default.btn-file
+          %span.fileinput-new
+            Выбрать файл(ы)
+          %span.fileinput-exists
+            Поменять
+          =f.file_field :images, multiple: true
+          
+        %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Удалить
+  .row  
+    .col-sm-2
+    .col-sm-10
+      -if object.images.present?
+        / -if object.logo.url(:mini_thumb).present?
+        -object.images.each_with_index do |picture, index|
+          =image_tag picture.thumb_mini.url
+          / =link_to "Удалить", admin_post_image_path(object, index), :method => :delete, data: { confirm: "Точно удалить данное изображение?" }
+      %span.help-block.m-b-none Для удаления фотографий просто перезалей их
+
+  .hr-line-dashed

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :cases 
+    resources :cases, only: [:index]
+    resources :posts, only: [:index, :show]
 
     # resources :services
 
@@ -26,7 +27,9 @@ Rails.application.routes.draw do
     resources :articles
     resources :article_categories
 
-    resources :posts
+    resources :posts do
+      resources :images, :only => [:create, :destroy] # support #create and #destroy
+    end
     resources :post_categories
 
     resources :newsletter_requests
