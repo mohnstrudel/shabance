@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_151630) do
+ActiveRecord::Schema.define(version: 2018_07_24_123152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 2018_07_23_151630) do
     t.string "slug"
     t.string "service_type"
     t.bigint "block_id"
+    t.string "logo"
     t.index ["block_id"], name: "index_services_on_block_id"
     t.index ["category_id"], name: "index_services_on_category_id"
     t.index ["slug"], name: "index_services_on_slug", unique: true

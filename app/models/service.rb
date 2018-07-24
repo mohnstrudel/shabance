@@ -12,7 +12,9 @@ class Service < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  has_one_attached :avatar
+  # has_one_attached :avatar
+
+  mount_uploader :logo, LogoUploader
 
   private
 

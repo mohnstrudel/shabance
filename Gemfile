@@ -57,6 +57,11 @@ gem "aws-sdk-s3", require: false
 
 gem 'mini_magick'
 gem 'image_processing'
+gem 'carrierwave'
+gem "fog-aws"
+# Nifty gem for placeholder images
+gem 'placeholdit'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

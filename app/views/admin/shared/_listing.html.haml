@@ -39,7 +39,7 @@
                       =t('admin.form.model.image')
                   -if object.has_attribute? :logo
                     %th
-                      =t('admin.form.model.logo')  
+                      Логотип
                   -if object.has_attribute? :title or object.try(:translated?, :title)
                     %th
                       =t('admin.form.model.title')
@@ -90,7 +90,7 @@
                         =image_tag obj.image.url(:mini_thumb)
                     -if obj.respond_to?(:logo)
                       %td
-                        =image_tag_or_default(obj, 'logo', version: :mini_thumb)
+                        =logo_tag_or_default(obj, thumb: :thumb_mini, size: '32x32')
                     -if obj.respond_to?(:title)
                       %td
                         =link_to obj.title, send("edit_admin_#{local_assigns[:namespace]}#{object_name(object)}_path", obj)

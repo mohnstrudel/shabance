@@ -78,4 +78,16 @@ module AdminHelper
     end
     link_to(name, '#', class: 'add_fields ' + args[:class], data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def logo_tag_or_default(object, options = {})
+    thumb = options[:thumb]
+    size = options[:size]
+    if object.logo.present?
+      if object.logo.send(thumb).present?
+        return image_tag(object.logo.send(thumb).url, class: options[:class])
+      end
+    else
+      return placeholdit_image_tag size, text: "No image", class: options[:class]
+    end
+  end
 end

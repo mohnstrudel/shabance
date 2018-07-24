@@ -15,5 +15,5 @@
         / Service item
         %a.service-item.dark{:href => category_subcategory_service_path(@parent_category, service.category, service)}
           %figure
-            =image_tag service.avatar.variant(resize: @random == 2 ? '640x308': '320x308')
+            =image_tag service.logo.send(@random==2 ? 'thumb_horizontal' : 'thumb_vertical').url
             %span.service-title=service.title

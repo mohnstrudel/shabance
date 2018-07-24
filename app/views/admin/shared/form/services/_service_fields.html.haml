@@ -1,4 +1,4 @@
--if object.respond_to?(:avatar)
+-if object.respond_to?(:logo)
   .form-group
     %label.col-sm-2.control-label
       Главное изображение
@@ -12,13 +12,13 @@
             Выбрать файл
           %span.fileinput-exists
             Поменять
-          =f.file_field :avatar
+          =f.file_field :logo
           
         %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Удалить
     .col-sm-2
-      -if object.avatar.attached?
+      -if object.logo.present?
         / -if object.logo.url(:mini_thumb).present?
-        =image_tag object.avatar.variant(resize: "128x128")
+        =image_tag object.logo.url(:thumb_mini)
   .hr-line-dashed
 -if object.respond_to?(:service_type)
   .form-group
