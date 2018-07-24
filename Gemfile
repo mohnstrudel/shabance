@@ -59,6 +59,7 @@ gem 'mini_magick'
 gem 'image_processing'
 gem 'carrierwave'
 gem "fog-aws"
+gem 'fog'
 # Nifty gem for placeholder images
 gem 'placeholdit'
 

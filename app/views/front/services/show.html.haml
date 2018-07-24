@@ -3,7 +3,7 @@
     %main#main.col-md-8.col-sm-12
       .content-element2
         .content-element3
-          =image_tag @service.avatar.variant(resize: '750x420')
+          =image_tag @service.logo.thumb_middle_size.url
           %h5.sub-title
             %b=@service.title
           %p=@service.leading_description

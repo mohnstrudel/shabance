@@ -4,8 +4,8 @@ class LogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -43,6 +43,10 @@ class LogoUploader < CarrierWave::Uploader::Base
 
   version :thumb_vertical do
     process resize_to_fill: [320, 308]
+  end
+
+  version :thumb_middle_size do
+    process resize_to_fill: [750, 420]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
