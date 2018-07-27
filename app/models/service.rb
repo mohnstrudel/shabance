@@ -14,6 +14,10 @@ class Service < ApplicationRecord
 
   # has_one_attached :avatar
 
+  def formatted_date
+    created_at.strftime("%d %b %Y")
+  end
+
   mount_uploader :logo, LogoUploader
 
   private

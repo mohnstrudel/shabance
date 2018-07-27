@@ -63,6 +63,8 @@ gem 'fog'
 # Nifty gem for placeholder images
 gem 'placeholdit'
 
+gem 'pagy'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

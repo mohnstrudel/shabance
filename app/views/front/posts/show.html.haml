@@ -1,0 +1,162 @@
+.container
+  .row
+    %main#main.col-md-12.col-sm-12
+      / entry
+      .entry.single-entry
+        / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
+        -if @post.video.present?
+          .thumbnail-attachment
+            .responsive-iframe
+              %iframe{:src => "https://www.youtube.com/embed/#{@post.get_video_url}?rel=0&showinfo=0&autohide=2&controls=0&playlist=J2Y_ld0KL-4&enablejsapi=1"}
+        -elsif @post.images.present?
+          .thumbnail-attachment.carousel-type-2
+            .owl-carousel.var2.style-2{"data-max-items" => "1"}
+              -@post.images.each do |image|
+                =image_tag image.thumb_medium_size.url, alt: ""
+        -elsif @post.cite.present?
+          .thumbnail-attachment
+            .blockquote-holder
+              %blockquote
+                %p=@post.cite
+                .author Роман Шабанов
+        -else
+          .thumbnail-attachment
+            %a{:href => "#"}
+              =image_tag @post.logo.thumb_middle_size.url
+        / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+        .entry-body
+          .label
+            -if @post.featured?
+              .title Важно
+            .date
+              %h6.month=@post.created_at.strftime("%b")
+              %h4.day=@post.created_at.strftime("%d")
+            %span.icon.licon-news
+          .wrapper
+            .entry-meta
+              by
+              %a.entry-cat{:href => "#"} admin
+              %a.entry-cat{:href => posts_path(category: @post.post_category.id)}=@post.post_category.title
+            .content-element5
+              %p=@post.body
+              -if @post.cite.present?
+                .blockquote-holder.style-2
+                  %blockquote
+                    %p=@post.cite
+                    .author Роман Шабанов, Адвокат
+
+            .flex-row.flex-justify.tooltips
+              -if @post.tags.any?
+                .tagcloud
+                  -@post.tags.each do |tag|
+                    %a{:href => "#"}=tag.name
+                
+              .info-btn.share.with-icon.left-tooltip
+                .tooltip
+                  %ul.social-icons.style-2
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-facebook
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-twitter
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-gplus-3
+                    %li
+                      %a{:href => "#"}
+                        %i.icon-linkedin-3
+                %i.licon-share2
+                Поделиться
+      
+      .content-element2
+        .entries-nav
+          .flex-row.flex-justify
+            .prev
+              -if @post.prev
+                %a.info-btn.with-icon.left-side{:href => post_path(@post.prev)}
+                  Предыдущая запись
+                  %i.licon-arrow-left
+                %h6=@post.prev.title
+            -if @post.next
+              .next
+                %a.info-btn.with-icon{:href => post_path(@post.next)}
+                  Следующая запись
+                  %i.licon-arrow-right
+                %h6=@post.next.title
+      
+      / =render partial: 'front/posts/about_author'
+      -if @related_posts.any?
+        .content-element6
+          %h3
+            %b Похожие блоги
+          .entry-box
+            .row
+              -@related_posts.each do |rp|
+                .col-xs-6
+                  / entry
+                  .entry
+                    / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
+                    .thumbnail-attachment
+                      %a{:href => posts_path(rp)}
+                        -if rp.logo.present?
+                          =image_tag rp.logo.thumb_middle_size.url, width: 360
+                        -else
+                          =placeholdit_image_tag '360x252', text: 'Нет изображения'
+                    / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+                    .entry-body
+                      .entry-meta
+                        %time.entry-date{:datetime => rp.formatted_date}=rp.formatted_date
+                        %a.entry-cat{:href => posts_path(category: rp.post_category.id)}=rp.post_category.title
+                      %h5.entry-title
+                        %a{:href => post_path(rp)}=rp.title
+      -if @related_cases.any?
+        .content-element6
+          %h3
+            %b Похожие кейсы
+          .entry-box
+            .row
+              -@related_cases.each do |rc|
+                .col-xs-6
+                  / entry
+                  .entry
+                    / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
+                    .thumbnail-attachment
+                      %a{:href => cases_path}
+                        -if rc.logo.present?
+                          =image_tag rc.logo.thumb_middle_size.url, width: 360
+                        -else
+                          =placeholdit_image_tag '360x252', text: 'Нет изображения'
+                    / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+                    .entry-body
+                      .entry-meta
+                        %time.entry-date{:datetime => rc.formatted_date}=rc.formatted_date
+                        %a.entry-cat{:href => cases_path}=rc.category.title
+                      %h5.entry-title
+                        %a{:href => cases_path}=rc.title
+      -if @related_services.any?
+        .content-element6
+          %h3
+            %b Похожие услуги
+          .entry-box
+            .row
+              -@related_services.each do |rs|
+                .col-xs-6
+                  / entry
+                  .entry
+                    / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
+                    .thumbnail-attachment
+                      %a{:href => category_subcategory_service_path(rs.category.parent, rs.category,rs)}
+                        -if rs.logo.present?
+                          =image_tag rs.logo.thumb_middle_size.url, width: 360
+                        -else
+                          =placeholdit_image_tag '360x252', text: 'Нет изображения'
+                    / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+                    .entry-body
+                      .entry-meta
+                        %time.entry-date{:datetime => rs.formatted_date}=rs.formatted_date
+                        %a.entry-cat{:href => category_subcategory_service_path(rs.category.parent, rs.category, rs)}=rs.category.title
+                      %h5.entry-title
+                        %a{:href => category_subcategory_service_path(rs.category.parent, rs.category, rs)}=rs.title
+      / =render partial: 'front/posts/comments'
+      

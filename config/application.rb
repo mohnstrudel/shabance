@@ -33,5 +33,7 @@ module Shabance
     config.project_name = "Shabance"
 
     config.service_types = {'1' => 'Физические лица', '2' => 'Юридические лица'}
+
+    config.page_size = 10
   end
 end

@@ -1,0 +1,113 @@
+-if @pages_total > 1
+  %ul.pagination
+
+    -unless page == 1
+      %li
+        =link_to "", send(path, page: page - 1), class: "prev-page #{page==1 ? 'disabled' : ''}", method: :get
+
+    -if @pages_total >= 7
+      / Ссылка на первую страницу
+      -if params[:page].present? && params[:page] == '1'
+        %li
+          =link_to "1", send(path, page: 1), class: "g-pagination__item g-pagination__item_active", method: :get
+      -elsif params[:page].nil?
+        %li
+          =link_to "1", send(path, page: 1), class: "g-pagination__item g-pagination__item_active", method: :get
+      -else
+        %li
+          =link_to "1", send(path, page: 1), class: "g-pagination__item", method: :get
+      / =debug
+
+      %li{class: "#{(2)==params[:page].to_i ? 'active' : ''}"}
+        =link_to "2", send(path, page: 2), class: "g-pagination__item #{(2)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+
+      / Как бы центр
+      -if ((page - 2) >= 3) && (page+2 <= @pages_total-2)
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+        %li
+          =link_to page-1, send(path, page: page-1), class: "g-pagination__item #{(page-1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li{class: "#{(page)==params[:page].to_i ? 'active' : ''}"}
+          =link_to page, send(path, page: page), class: "g-pagination__item #{(page)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to page+1, send(path, page: page+1), class: "g-pagination__item #{(page+1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+      -elsif (page == 4)
+        %li
+          =link_to page-1, send(path, page: page-1), class: "g-pagination__item #{(page-1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li{class: "#{(page)==params[:page].to_i ? 'active' : ''}"}
+          =link_to page, send(path, page: page), class: "g-pagination__item #{(page)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to page+1, send(path, page: page+1), class: "g-pagination__item #{(page+1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+      -elsif (page == 3)
+        %li{class: "#{(page)==params[:page].to_i ? 'active' : ''}"}
+          =link_to page, send(path, page: page), class: "g-pagination__item #{(page)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to page+1, send(path, page: page+1), class: "g-pagination__item #{(page+1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+      -elsif (page == 2)
+        %li
+          =link_to page+1, send(path, page: page+1), class: "g-pagination__item #{(page+1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+      -elsif (page == 1)
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+
+
+      -elsif (page == @pages_total-3)
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+        %li
+          =link_to page-1, send(path, page: page-1), class: "g-pagination__item #{(page-1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to page, send(path, page: page), class: "g-pagination__item #{(page)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to page+1, send(path, page: page+1), class: "g-pagination__item #{(page+1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+      -elsif (page == @pages_total-2)
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+        %li
+          =link_to page-1, send(path, page: page-1), class: "g-pagination__item #{(page-1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+        %li
+          =link_to page, send(path, page: page), class: "g-pagination__item #{(page)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+      -elsif (page == @pages_total-1)
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+        %li
+          =link_to page-1, send(path, page: page-1), class: "g-pagination__item #{(page-1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+      -elsif (page == @pages_total)
+        %li
+          =link_to "...", "#", class: "g-pagination__item"
+
+
+        
+
+      %li
+        =link_to @pages_total-1, send(path, page: @pages_total-1), class: "g-pagination__item #{(@pages_total-1)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+      %li
+        =link_to @pages_total, send(path, page: @pages_total), class: "g-pagination__item #{(@pages_total)==params[:page].to_i ? 'g-pagination__item_active' : ''}", method: :get
+      
+    -else
+      -@pages_total.times do |page|
+        -if page == 0
+          -if params[:page].present? && params[:page] == '1'
+            %li.active
+              =link_to "1", send(path, page: 1), method: :get
+          -elsif params[:page].nil?
+            %li.active
+              =link_to "1", send(path, page: 1), method: :get
+          -else
+            %li
+              =link_to "1", send(path, page: 1), method: :get
+        -else
+          %li{class: "#{(page+1)==params[:page].to_i ? 'active' : ''}"}
+            =link_to page+1, send(path, page: page+1), method: :get
+    
+    -unless page == @pages_total
+      %li
+        =link_to "", send(path, page: page + 1), class: "next-page #{page==@pages_total ? 'disabled' : ''}", method: :get

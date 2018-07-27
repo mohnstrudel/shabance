@@ -7,6 +7,10 @@ class Case < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  def formatted_date
+    created_at.strftime("%d %b %Y")
+  end
+
   private
 
   def set_slug

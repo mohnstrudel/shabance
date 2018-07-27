@@ -4,661 +4,75 @@
       / Entries
       .entry-box.with-sep
         / entry
+        -if @posts.any?
+          -@posts.each do |post|
+            .entry
+              / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
+              -if post.video.present?
+                .thumbnail-attachment
+                  .responsive-iframe
+                    %iframe{:src => "https://www.youtube.com/embed/#{post.get_video_url}?rel=0&showinfo=0&autohide=2&controls=0&playlist=J2Y_ld0KL-4&enablejsapi=1"}
+              -elsif post.images.present?
+                .thumbnail-attachment.carousel-type-2
+                  .owl-carousel.var2.style-2{"data-max-items" => "1"}
+                    -post.images.each do |image|
+                      =image_tag image.thumb_medium_size.url, alt: ""
+              -elsif post.cite.present?
+                .thumbnail-attachment
+                  .blockquote-holder
+                    %blockquote
+                      %p=post.cite
+                      .author Роман Шабанов
+              -else
+                .thumbnail-attachment
+                  %a{:href => "#"}
+                    =image_tag post.logo.thumb_middle_size.url
+                    / %img{:alt => "", :src => "images/750x504_img1.jpg"}/
+              / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
+              .entry-body
+                .label
+                  -if post.featured?
+                    .title Важно
+                  .date
+                    %h6.month=post.created_at.strftime("%b")
+                    %h4.day=post.created_at.strftime("%d")
+                  %span.icon.licon-news
+                .wrapper
+                  .entry-meta
+                    автор
+                    %a.entry-cat{:href => "#"} admin
+                    %a.entry-cat{:href => "#"}=post.post_category.title
+                    / %a.entry-cat{:href => "#"} 2 comments
+                  %h5.entry-title
+                    %a{:href => "#"}=post.title
+                  %p=truncate(post.body, length: 200)
+                  .flex-row.flex-justify.tooltips
+                    %a.info-btn.with-icon{:href => post_path(post)}
+                      Продолжить чтение
+                      %i.licon-arrow-right
+                    .info-btn.share.with-icon.left-tooltip
+                      .tooltip
+                        %ul.social-icons.style-2
+                          %li
+                            %a{:href => "#"}
+                              %i.icon-facebook
+                          %li
+                            %a{:href => "#"}
+                              %i.icon-twitter
+                          %li
+                            %a{:href => "#"}
+                              %i.icon-gplus-3
+                          %li
+                            %a{:href => "#"}
+                              %i.icon-linkedin-3
+                      %i.licon-share2
+                      Поделиться
+        -else
+          .entry
+            К сожалению, никаких записей нет.
 
-        -@posts.each do |post|
-          .entry
-            / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-            -if post.video.present?
-              .thumbnail-attachment
-                .responsive-iframe
-                  %iframe{:src => "https://www.youtube.com/embed/Nf4AC3puB3I?rel=0&showinfo=0&autohide=2&controls=0&playlist=J2Y_ld0KL-4&enablejsapi=1"}
-            -else
-              .thumbnail-attachment
-                %a{:href => "#"}
-                  =image_tag post.logo.thumb_middle_size.url
-                  / %img{:alt => "", :src => "images/750x504_img1.jpg"}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .label
-                -if post.featured?
-                  .title Важно
-                .date
-                  %h6.month=post.created_at.strftime("%b")
-                  %h4.day=post.created_at.strftime("%d")
-                %span.icon.licon-news
-              .wrapper
-                .entry-meta
-                  автор
-                  %a.entry-cat{:href => "#"} admin
-                  %a.entry-cat{:href => "#"}=post.post_category.title
-                  / %a.entry-cat{:href => "#"} 2 comments
-                %h5.entry-title
-                  %a{:href => "#"}=post.title
-                %p=truncate(post.body, length: 200)
-                .flex-row.flex-justify.tooltips
-                  %a.info-btn.with-icon{:href => post_path(post)}
-                    Продолжить чтение
-                    %i.licon-arrow-right
-                  .info-btn.share.with-icon.left-tooltip
-                    .tooltip
-                      %ul.social-icons.style-2
-                        %li
-                          %a{:href => "#"}
-                            %i.icon-facebook
-                        %li
-                          %a{:href => "#"}
-                            %i.icon-twitter
-                        %li
-                          %a{:href => "#"}
-                            %i.icon-gplus-3
-                        %li
-                          %a{:href => "#"}
-                            %i.icon-linkedin-3
-                    %i.licon-share2
-                    Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-          .thumbnail-attachment.carousel-type-2
-            .owl-carousel.var2.style-2{"data-max-items" => "1"}
-              %img{:alt => "", :src => "images/750x504_img2.jpg"}/
-              %img{:alt => "", :src => "images/750x504_img3.jpg"}/
-              %img{:alt => "", :src => "images/750x504_img4.jpg"}/
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Oct
-                %h4.day 20
-              %span.icon.licon-news
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} events
-                %a.entry-cat{:href => "#"} 2 comments
-              %h5.entry-title
-                %a{:href => "#"} Post With Slideshow
-              %p Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue. Nam elit agna,endrerit sit amet, tincidunt ac.
-              .flex-row.flex-justify.tooltips
-                %a.info-btn.with-icon{:href => "#"}
-                  Continue Reading
-                  %i.licon-arrow-right
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-          .thumbnail-attachment
-            .blockquote-holder
-              %blockquote
-                %p “Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh.”
-                .author Mark Johnson, Real Estate Client
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Oct
-                %h4.day 17
-              %span.icon.licon-quote-open
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} publications
-                %a.entry-cat{:href => "#"} 0 comments
-              %p Vestibulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Lorem ipsum dolor sit amet, consectetuer adipisMauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis.
-              .flex-row.flex-justify.tooltips
-                %a.info-btn.with-icon{:href => "#"}
-                  Continue Reading
-                  %i.licon-arrow-right
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-          .thumbnail-attachment
-            .responsive-iframe
-              %iframe{:src => "https://www.youtube.com/embed/Nf4AC3puB3I?rel=0&showinfo=0&autohide=2&controls=0&playlist=J2Y_ld0KL-4&enablejsapi=1"}
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Oct
-                %h4.day 10
-              %span.icon.licon-clapboard-play
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} case studies
-                %a.entry-cat{:href => "#"} 7 comments
-              %h5.entry-title
-                %a{:href => "#"} Post With Youtube Video
-              %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-              .flex-row.flex-justify.tooltips
-                %a.info-btn.with-icon{:href => "#"}
-                  Continue Reading
-                  %i.licon-arrow-right
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Oct
-                %h4.day 08
-              %span.icon.licon-link2
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} news
-                %a.entry-cat{:href => "#"} 1 comments
-              %h5.entry-title
-                %a{:href => "#"} Link Post Example
-              .flex-row.flex-justify.tooltips
-                %div
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-          .thumbnail-attachment
-            .responsive-iframe
-              %iframe{:allowfullscreen => "", :src => "//player.vimeo.com/video/99912359?title=0&byline=0&portrait=0&color=dedede"}
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Oct
-                %h4.day 03
-              %span.icon.licon-clapboard-play
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} events
-                %a.entry-cat{:href => "#"} 7 comments
-              %h5.entry-title
-                %a{:href => "#"} Post With Vimeo Video
-              %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-              .flex-row.flex-justify.tooltips
-                %a.info-btn.with-icon{:href => "#"}
-                  Continue Reading
-                  %i.licon-arrow-right
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-          .thumbnail-attachment
-            .audio-frame
-              %iframe{:src => "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/142827697&color=ff5500&auto_play=false&hide_related=true&show_artwork=true"}
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Sep
-                %h4.day 29
-              %span.icon.licon-headphones
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} news
-                %a.entry-cat{:href => "#"} 7 comments
-              %h5.entry-title
-                %a{:href => "#"} Post With SoundCloud
-              %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-              .flex-row.flex-justify.tooltips
-                %a.info-btn.with-icon{:href => "#"}
-                  Continue Reading
-                  %i.licon-arrow-right
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-        / entry
-        .entry
-          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-          .thumbnail-attachment
-            .audio-poster
-              %img{:alt => "", :src => "images/750x420_img2.jpg"}/
-              .audioplayer1
-                %audio{:controls => "", :preload => "auto"}
-                  %source{:src => "audio/BlueDucks_FourFlossFiveSix.mp3"}
-                    %source{:src => "audio/BlueDucks_FourFlossFiveSix.ogg"}
-                      %source{:src => "audio/BlueDucks_FourFlossFiveSix.wav"}
-          / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-          .entry-body
-            .label
-              .date
-                %h6.month Sep
-                %h4.day 21
-              %span.icon.licon-clapboard-play
-            .wrapper
-              .entry-meta
-                by
-                %a.entry-cat{:href => "#"} admin
-                %a.entry-cat{:href => "#"} news
-                %a.entry-cat{:href => "#"} 7 comments
-              %h5.entry-title
-                %a{:href => "#"} Post With Selfhosted Video
-              %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
-              .flex-row.flex-justify.tooltips
-                %a.info-btn.with-icon{:href => "#"}
-                  Continue Reading
-                  %i.licon-arrow-right
-                .info-btn.share.with-icon.left-tooltip
-                  .tooltip
-                    %ul.social-icons.style-2
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-facebook
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-twitter
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-gplus-3
-                      %li
-                        %a{:href => "#"}
-                          %i.icon-linkedin-3
-                  %i.licon-share2
-                  Share
-      / Pagination
-      %ul.pagination
-        %li
-          %a.prev-page{:href => "#"}
-        %li
-          %a{:href => "#"} 1
-        %li.active
-          %a{:href => "#"} 2
-        %li
-          %a{:href => "#"} 3
-        %li
-          %a.next-page{:href => "#"}
-    %aside#sidebar.sidebar.col-md-4.col-sm-12
-      / Widget
-      .widget.with-bg
-        .search-holder
-          %form.contact-form.style-2
-            %button.search-button{:type => "submit"}
-            .wrapper
-              %input{:name => "search", :placeholder => "Search", :type => "text"}/
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Categories
-        %ul.minus-list
-          %li
-            %a{:href => "#"} Case Studies
-          %li
-            %a{:href => "#"} Events
-          %li
-            %a{:href => "#"} News
-          %li
-            %a{:href => "#"} Publications
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Latest Articles
-        .entry-box.entry-small
-          / entry
-          .entry
-            / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-            .thumbnail-attachment
-              %a{:href => "#"}
-                %img{:alt => "", :src => "images/114x84_img1.jpg"}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .entry-meta
-                %time.entry-date{:datetime => "2018-10-24"} 24 October 2018
-              %h6.entry-title
-                %a{:href => "#"} Ut Enim Ad Minima Veniam, Quis Nostrum
-          / entry
-          .entry
-            / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-            .thumbnail-attachment
-              %a{:href => "#"}
-                %img{:alt => "", :src => "images/114x84_img2.jpg"}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .entry-meta
-                %time.entry-date{:datetime => "2018-10-21"} 21 October 2018
-              %h6.entry-title
-                %a{:href => "#"} Aliquam Erat Volutpat Duis Ac
-          / entry
-          .entry
-            / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-            .thumbnail-attachment
-              %a{:href => "#"}
-                %img{:alt => "", :src => "images/114x84_img3.jpg"}/
-            / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
-            .entry-body
-              .entry-meta
-                %time.entry-date{:datetime => "2018-10-15"} 15 October 2018
-              %h6.entry-title
-                %a{:href => "#"} Aliquam Erat Volutpat Duis Ac
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Newsletter sign up
-        %form#newsletter.newsletter.style-2
-          %input{:name => "newsletter-email", :placeholder => "Enter your email address", :type => "email"}/
-          %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Submit
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Tags
-        .tagcloud
-          %a{:href => "#"} accident
-          %a{:href => "#"} attorney
-          %a{:href => "#"} case result
-          %a{:href => "#"} consultation
-          %a{:href => "#"} criminal
-          %a{:href => "#"} defence
-          %a{:href => "#"} law
-          %a{:href => "#"} lawyer
-          %a{:href => "#"} medicare
-      / Widget
-      .widget.with-bg
-        .banner.align-center{"data-bg" => "images/300x250_bg1.jpg"}
-          %h4.section-title
-            We are Here
-            %br/
-            to Fight For You!
-            %span.item-divider-3.style-3
-          %a.btn.btn-style-2{:href => "#"} Request Free Consultation
-      / Widget
-      .widget.with-bg
-        %h5.widget-title From Twitter
-        #twitter.twitter{"data-twitter-items" => "2"}
-        %a.btn.btn-small.btn-style-2{:href => "#"}
-          %i.icon-twitter>
-          Follow Us on Twitter
-      / Widget
-      .widget.with-bg
-        %h5.widget-title From Instagram
-        #instafeed.instagram-feed{"data-instagram" => "4"}
-        %a.btn.btn-small.btn-style-2{:href => "#"}
-          %i.icon-instagram-5>
-          Follow Us on Instagram
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Calendar
-        .widget-calendar
-          .owl-carousel{"data-max-items" => "1"}
-            .item
-              .calendar-wrap
-                %table
-                  %tr
-                    / titles for td
-                    %th{:colspan => "7"} October 2018
-                  %tr.days
-                    %td M
-                    %td T
-                    %td W
-                    %td T
-                    %td F
-                    %td S
-                    %td S
-                  %tr
-                    %td 1
-                    %td 2
-                    %td 3
-                    %td 4
-                    %td 5
-                    %td 6
-                    %td 7
-                  %tr
-                    %td 8
-                    %td.link
-                      %a{:href => "#"} 9
-                    %td 10
-                    %td.link.current
-                      %a{:href => "#"} 11
-                    %td 12
-                    %td 13
-                    %td 14
-                  %tr
-                    %td.link
-                      %a{:href => "#"} 15
-                    %td 16
-                    %td 17
-                    %td 18
-                    %td 19
-                    %td.link
-                      %a{:href => "#"} 20
-                    %td 21
-                  %tr
-                    %td 22
-                    %td 23
-                    %td.link
-                      %a{:href => "#"} 24
-                    %td 25
-                    %td 26
-                    %td 27
-                    %td 28
-                  %tr
-                    %td 29
-                    %td 30
-                    %td
-                    %td
-                    %td
-                    %td
-                    %td
-            .item
-              .calendar-wrap
-                %table
-                  %tr
-                    / titles for td
-                    %th{:colspan => "7"} November 2018
-                  %tr.days
-                    %td M
-                    %td T
-                    %td W
-                    %td T
-                    %td F
-                    %td S
-                    %td S
-                  %tr
-                    %td 1
-                    %td 2
-                    %td 3
-                    %td 4
-                    %td 5
-                    %td 6
-                    %td 7
-                  %tr
-                    %td 8
-                    %td.link
-                      %a{:href => "#"} 9
-                    %td 10
-                    %td.link.current
-                      %a{:href => "#"} 11
-                    %td 12
-                    %td 13
-                    %td 14
-                  %tr
-                    %td.link
-                      %a{:href => "#"} 15
-                    %td 16
-                    %td 17
-                    %td 18
-                    %td 19
-                    %td.link
-                      %a{:href => "#"} 20
-                    %td 21
-                  %tr
-                    %td 22
-                    %td 23
-                    %td.link
-                      %a{:href => "#"} 24
-                    %td 25
-                    %td 26
-                    %td 27
-                    %td 28
-                  %tr
-                    %td 29
-                    %td 30
-                    %td
-                    %td
-                    %td
-                    %td
-                    %td
-        %a.calendar-month{:href => "#"} « Sep
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Testimonials
-        .owl-carousel.testimonial-holder{"data-max-items" => "1"}
-          .testimonial
-            %blockquote
-              %p “Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.”
-              .author Mark Johnson, Real Estate Client
-          .testimonial
-            %blockquote
-              %p “Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.”
-              .author Mark Johnson, Real Estate Client
-        %a.btn.btn-small.btn-style-2{:href => "#"} More Testimonials
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Recent Comments
-        %ul.info-links.comment-type
-          %li
-            %a.author{:href => "#"} admin
-            on
-            %a{:href => "#"} Post With SoundCloud
-          %li
-            %a.author{:href => "#"} jane smith
-            on
-            %a{:href => "#"} Featured Post With Image
-          %li
-            %a.author{:href => "#"} alex russell
-            on
-            %a{:href => "#"} Post With Vimeo Video
-          %li
-            %a.author{:href => "#"} admin
-            on
-            %a{:href => "#"} Post With SoundCloud
-          %li
-            %a.author{:href => "#"} jane smith
-            on
-            %a{:href => "#"} Featured Post With Image
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Archives
-        %ul.minus-list
-          %li
-            %a{:href => "#"} November 2018
-          %li
-            %a{:href => "#"} October 2018
-          %li
-            %a{:href => "#"} September 2018
-          %li
-            %a{:href => "#"} August 2018
-          %li
-            %a{:href => "#"} July 2018
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Text Widget
-        %p Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat.
-      / Widget
-      .widget.with-bg
-        %h5.widget-title Meta
-        %ul.minus-list
-          %li
-            %a{:href => "#"} Log in
-          %li
-            %a{:href => "#"} Entries RSS
-          %li
-            %a{:href => "#"} Comments RSS
-          %li
-            %a{:href => "#"} WordPress.org
+
+      / Pagination with pagy
+      =render partial: 'front/navigation/pager', locals: {path: "posts_path", page: @page}
+
+    =render partial: 'front/posts/sidebar'

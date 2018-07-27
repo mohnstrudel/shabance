@@ -90,4 +90,14 @@ module AdminHelper
       return placeholdit_image_tag size, text: "No image", class: options[:class]
     end
   end
+
+  def medium_picture(object)
+    if object.logo?
+      return image_tag(object.logo.thumb_middle_size.url, width: 114, height: 84)
+    elsif object.images.any?
+      return image_tag(object.images.first.thumb_middle_size.url, width: 114, height: 84)
+    else
+      return placeholdit_image_tag '114x84', text: "No image"
+    end
+  end
 end

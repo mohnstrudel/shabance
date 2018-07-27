@@ -1,2 +1,3 @@
 module Front::PostsHelper
+  
 end
