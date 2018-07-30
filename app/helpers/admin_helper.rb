@@ -94,7 +94,7 @@ module AdminHelper
   def medium_picture(object)
     if object.logo?
       return image_tag(object.logo.thumb_middle_size.url, width: 114, height: 84)
-    elsif object.images.any?
+    elsif object.images.present?
       return image_tag(object.images.first.thumb_middle_size.url, width: 114, height: 84)
     else
       return placeholdit_image_tag '114x84', text: "No image"

@@ -1,0 +1,68 @@
+%aside#sidebar.sidebar.col-md-4.col-sm-12
+  / Widget
+  .widget.with-bg
+    .search-holder
+      =form_with(url: articles_path, class: 'contact-form style-2') do |f|
+        %button.search-button{:type => "submit"}
+        .wrapper
+          Поиск в разделе "Статьи"
+          / %input{:name => "search", :placeholder => "Поиск", :type => "text"}/
+  / Widget
+  .widget.with-bg
+    %h5.widget-title Категории
+    %ul.minus-list
+      -@article_categories.each do |article_category|
+        %li
+          %a{:href => articles_path(category: article_category.id)}=article_category.title
+  / Widget
+  .widget.with-bg
+    %h5.widget-title Последние записи
+    .entry-box.entry-small
+      / entry
+      -@last_articles.each do |last_article|
+        .entry
+          / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
+          .thumbnail-attachment
+            %a{:href => article_path(last_article)}
+              =medium_picture(last_article)
+          .entry-body
+            .entry-meta
+              %time.entry-date{:datetime => last_article.formatted_date}=last_article.formatted_date
+            %h6.entry-title
+              %a{:href => article_path(last_article)}=last_article.title
+  / Widget
+  .widget.with-bg
+    %h5.widget-title Подписаться на рассылку
+    %form#newsletter.newsletter.style-2
+      %input{:name => "newsletter-email", :placeholder => "Введите эл. адрес", :type => "email"}/
+      %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Отправить
+  / Widget
+  .widget.with-bg
+    %h5.widget-title Тэги
+    .tagcloud
+      -@tags.each do |tag|
+        %a{:href => "#"}=tag
+      
+  / Widget
+  .widget.with-bg
+    .banner.align-center{"data-bg" => "images/300x250_bg1.jpg"}
+      %h4.section-title
+        Мы боремся
+        %br/
+        за Ваше право!
+        %span.item-divider-3.style-3
+      %a.btn.btn-style-2{:href => "#"} Бесплатная консультация
+  / Widget
+  .widget.with-bg
+    %h5.widget-title Мы в Twitter
+    #twitter.twitter{"data-twitter-items" => "2"}
+    %a.btn.btn-small.btn-style-2{:href => "#"}
+      %i.icon-twitter>
+      Следите за событиями
+  / Widget
+  .widget.with-bg
+    %h5.widget-title Мы в Instagram
+    #instafeed.instagram-feed{"data-instagram" => "4"}
+    %a.btn.btn-small.btn-style-2{:href => "#"}
+      %i.icon-instagram-5>
+      Следите за событиями

@@ -1,0 +1,78 @@
+.content-element
+  %h3
+    %b Comments
+  %ol.comments-list
+    %li.comment
+      %article
+        / - - - - - - - - - - - - - Avatar - - - - - - - - - - - - - - - -
+        .gravatar
+          %a{:href => "#"}
+            %img{:alt => "", :src => "images/84x84_photo1.jpg"}/
+        / - - - - - - - - - - - - - End of avatar - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Comment body - - - - - - - - - - - - - - - -
+        .comment-body
+          %header.comment-meta
+            %h6.comment-author
+              %a{:href => "#"} Camala Haddon
+            .comment-info
+              .entry-meta
+                %time.entry-date{:datetime => "2018-10-17"} October 17, 2018 at 2:41 pm
+                %a.entry-cat{:href => "#"} Reply
+          %p Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        / / .comment-body
+        / - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - -
+      %ol.children
+        %li.comment
+          %article
+            / - - - - - - - - - - - - - Avatar - - - - - - - - - - - - - - - -
+            .gravatar
+              %a{:href => "#"}
+                %img{:alt => "", :src => "images/84x84_photo2.jpg"}/
+            / - - - - - - - - - - - - - End of avatar - - - - - - - - - - - - - - - -
+            / - - - - - - - - - - - - - Comment body - - - - - - - - - - - - - - - -
+            .comment-body
+              %header.comment-meta
+                %h6.comment-author
+                  %a{:href => "#"} Admin
+                .comment-info
+                  .entry-meta
+                    %time.entry-date{:datetime => "2018-10-17"} October 17, 2018 at 2:41 pm
+                    %a.entry-cat{:href => "#"} Reply
+              %p Mauris fermentum dictum magna. Sed laoreet aliquam leo.
+            / / .comment-body
+            / - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - -
+    %li.comment
+      %article
+        / - - - - - - - - - - - - - Avatar - - - - - - - - - - - - - - - -
+        .gravatar
+          %a{:href => "#"}
+            %img{:alt => "", :src => "images/84x84_photo3.jpg"}/
+        / - - - - - - - - - - - - - End of avatar - - - - - - - - - - - - - - - -
+        / - - - - - - - - - - - - - Comment body - - - - - - - - - - - - - - - -
+        .comment-body
+          %header.comment-meta
+            %h6.comment-author
+              %a{:href => "#"} Bradley Grosh
+            .comment-info
+              .entry-meta
+                %time.entry-date{:datetime => "2018-10-17"} October 17, 2018 at 2:41 pm
+                %a.entry-cat{:href => "#"} Reply
+          %p Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.
+        / / .comment-body
+        / - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - -
+.content-element
+  %h3
+    %b Leave a Comment
+  %p Your email address will not be published. Fields marked with an * are required.
+  %form.contact-form.style-3
+    .flex-row
+      .col-sm-6
+        %input{:placeholder => "Name *", :type => "text"}/
+      .col-sm-6
+        %input{:placeholder => "Email *", :type => "email"}/
+      .col-sm-12
+        %input{:placeholder => "Website", :type => "text"}/
+      .col-sm-12
+        %textarea{:placeholder => "Message *", :rows => "6"}
+      .col-sm-12
+        %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Submit Comment

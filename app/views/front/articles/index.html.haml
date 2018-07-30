@@ -4,50 +4,53 @@
       / Entries
       .entry-box.with-sep
         / entry
-        -if @posts.any?
-          -@posts.each do |post|
+        -if @articles.any?
+          -@articles.each do |article|
             .entry
               / - - - - - - - - - - - - - Entry attachment - - - - - - - - - - - - - - - -
-              -if post.video.present?
+              -if article.video.present?
                 .thumbnail-attachment
                   .responsive-iframe
-                    %iframe{:src => "https://www.youtube.com/embed/#{post.get_video_url}?rel=0&showinfo=0&autohide=2&controls=0&playlist=J2Y_ld0KL-4&enablejsapi=1"}
-              -elsif post.images.present?
+                    %iframe{:src => "https://www.youtube.com/embed/#{article.get_video_url}?rel=0&showinfo=0&autohide=2&controls=0&playlist=J2Y_ld0KL-4&enablejsapi=1"}
+              -elsif article.images.present?
                 .thumbnail-attachment.carousel-type-2
                   .owl-carousel.var2.style-2{"data-max-items" => "1"}
-                    -post.images.each do |image|
+                    -article.images.each do |image|
                       =image_tag image.thumb_medium_size.url, alt: ""
-              -elsif post.cite.present?
+              -elsif article.cite.present?
                 .thumbnail-attachment
                   .blockquote-holder
                     %blockquote
-                      %p=post.cite
+                      %p=article.cite
                       .author Роман Шабанов
               -else
                 .thumbnail-attachment
                   %a{:href => "#"}
-                    =image_tag post.logo.thumb_middle_size.url
+                    -if article.logo.present?
+                      =image_tag article.logo.thumb_middle_size.url
+                    -else
+                      =placeholdit_image_tag '750x504'
                     / %img{:alt => "", :src => "images/750x504_img1.jpg"}/
               / - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - -
               .entry-body
                 .label
-                  -if post.featured?
+                  -if article.featured?
                     .title Важно
                   .date
-                    %h6.month=post.created_at.strftime("%b")
-                    %h4.day=post.created_at.strftime("%d")
+                    %h6.month=article.created_at.strftime("%b")
+                    %h4.day=article.created_at.strftime("%d")
                   %span.icon.licon-news
                 .wrapper
                   .entry-meta
                     автор
                     %a.entry-cat{:href => "#"} admin
-                    %a.entry-cat{:href => posts_path(category: post.post_category.id)}=post.post_category.title
+                    %a.entry-cat{:href => articles_path(category: article.article_category.id)}=article.article_category.title
                     / %a.entry-cat{:href => "#"} 2 comments
                   %h5.entry-title
-                    %a{:href => post_path(post)}=post.title
-                  %p=truncate(post.body, length: 200)
+                    %a{:href => article_path(article)}=article.title
+                  %p=truncate(article.body, length: 200)
                   .flex-row.flex-justify.tooltips
-                    %a.info-btn.with-icon{:href => post_path(post)}
+                    %a.info-btn.with-icon{:href => article_path(article)}
                       Продолжить чтение
                       %i.licon-arrow-right
                     .info-btn.share.with-icon.left-tooltip
@@ -73,6 +76,6 @@
 
 
       / Pagination with pagy
-      =render partial: 'front/navigation/pager', locals: {path: "posts_path", page: @page}
+      =render partial: 'front/navigation/pager', locals: {path: "articles_path", page: @page}
 
-    =render partial: 'front/posts/sidebar'
+    =render partial: 'front/articles/sidebar'

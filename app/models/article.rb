@@ -9,6 +9,31 @@ class Article < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  def formatted_date
+    created_at.strftime("%d %b %Y")
+  end
+
+
+  def next
+    # Post.active.where("published_at > ?", published_at).order("published_at DESC").last
+    Article.where("id > ?", id).order("id ASC").last
+  end
+
+  def prev
+    # Post.active.where("published_at < ?", published_at).order("published_at DESC").first
+    Article.where("id < ?", id).order("id DESC").first
+  end
+
+
+
+  def self.search(keyword)
+    if keyword.present?
+      where('keywords LIKE ?', "%#{keyword.downcase}%")
+    else
+      all
+    end
+  end
+
   private
 
   def set_slug
