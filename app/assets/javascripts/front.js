@@ -3,6 +3,7 @@
 //= require front/jquery-ui.min
 
 
+
 //= require front/isotope.pkgd.min
 //= require front/jquery.queryloader2.min
 //= require front/owl.carousel.min
@@ -13,3 +14,6 @@
 //= require front/script
 
 //= require_tree ../../../vendor/assets/javascripts/front/extensions/.
+
+// RAILS SCRIPTS
+//= require rails-ujs

@@ -8,6 +8,7 @@ class FrontController < ApplicationController
   def get_setting
     @settings = Setting.first
     @additional_phones = @settings.phones.any? ? @settings.phones : nil
-
+    
+    
   end
 end

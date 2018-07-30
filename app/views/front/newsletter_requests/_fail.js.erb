@@ -1,0 +1,10 @@
+var subscribe = $('[id^="newsletter"]');
+subscribe.append('<div class="message-container-subscribe"></div>');
+var message = $('.message-container-subscribe'),text;
+text = "Введите адрес электронной почты!";
+message.html('<div class="alert-warning"><p>'+text+'</p></div>')
+  .slideDown()
+  .delay(4000)
+  .slideUp(function(){
+    $(this).html("");
+  });

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :cases, only: [:index]
     resources :posts, only: [:index, :show]
     resources :articles, only: [:index, :show]
-
+    resources :newsletter_requests
     # resources :services
 
   end

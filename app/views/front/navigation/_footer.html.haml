@@ -46,10 +46,11 @@
         .col-md-4.col-sm-12
           .widget
             %h6.widget-title Подпишитесь на рассылку
-            %form#newsletter.newsletter
-              %input{:name => "newsletter-email", :placeholder => "Enter your email address", :type => "email"}/
-              %button{"data-type" => "submit", :type => "submit"}
+            =form_with model: NewsletterRequest.new, class: 'newsletter', id: 'newsletter' do |f|
+              =f.email_field :email, placeholder: 'Введите адрес эл. почты'
+              =button_tag do
                 %i.licon-envelope
+                
           .widget
             %h6.widget-title Оставайтесь с нами на связи
             %ul.social-icons
