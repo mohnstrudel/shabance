@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show]
     resources :articles, only: [:index, :show]
     resources :newsletter_requests
+    resources :contact_requests
     # resources :services
 
   end

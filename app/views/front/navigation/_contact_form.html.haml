@@ -1,0 +1,22 @@
+.page-section-bg2.parallax-section{"data-bg" => "images/1920x1000_bg3.jpg"}
+  .container
+    .row
+      .col-sm-4
+        %h2.section-title
+          Как мы можем вам помочь?
+          %span.item-divider-3.style-3
+        %p Рассмотрим ваш случай в течении 24 часов. Все поля обязательны для заполнения.
+      .col-sm-8
+        =form_with(model: ContactRequest.new, class: 'contact-form', id: 'contact-form') do |form|
+          .flex-row
+            .col-sm-4
+              =form.text_field :name, placeholder: 'Имя *', required: ""
+            .col-sm-4
+              =form.text_field :phone, placeholder: 'Телефон *', required: ""
+            .col-sm-4
+              =form.text_field :email, placeholder: 'Эл. почта *', required: ""
+            .col-sm-12
+              =form.text_area :body, placeholder: 'Сообщение *', required: "", rows: 3
+            .col-sm-12
+              =form.submit 'Отправить', class: 'btn btn-style-2'
+              

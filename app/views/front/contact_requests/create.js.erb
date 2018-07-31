@@ -1,0 +1,16 @@
+var cf = $('#contact-form');
+cf.append('<div class="message-container"></div>');
+
+text = "Спасибо за Ваше обращение! Мы его получили.";
+
+cf.find('input:not([type="submit"]),textarea').val('');
+
+$('.message-container').html('<div class="alert-success"><p>'+text+'</p></div>')
+  .delay(150)
+  .slideDown(300)
+  .delay(4000)
+  .slideUp(300,function(){
+    $(this).html("");
+  });
+
+          
