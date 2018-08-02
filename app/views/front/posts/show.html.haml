@@ -1,3 +1,5 @@
+-meta title: @post.seo.try(:title), description: @post.seo.try(:description), keywords: @post.seo.try(:keywords)
+
 .container
   .row
     %main#main.col-md-12.col-sm-12
@@ -53,19 +55,7 @@
                 
               .info-btn.share.with-icon.left-tooltip
                 .tooltip
-                  %ul.social-icons.style-2
-                    %li
-                      %a{:href => "#"}
-                        %i.icon-facebook
-                    %li
-                      %a{:href => "#"}
-                        %i.icon-twitter
-                    %li
-                      %a{:href => "#"}
-                        %i.icon-gplus-3
-                    %li
-                      %a{:href => "#"}
-                        %i.icon-linkedin-3
+                  =render partial: 'front/navigation/share_alishare'
                 %i.licon-share2
                 Поделиться
       

@@ -18,9 +18,13 @@
               =t('admin.form.tab_main.title')
           -if object.respond_to?(:seo)
             %li
-              %a{"data-toggle" => "tab", :href => "#tab-3"}
+              %a{"data-toggle" => "tab", :href => "#tab-2"}
                 SEO
         .tab-content
           #tab-1.tab-pane.active
             .panel-body
               =render partial: "admin/shared/form/main_fields", locals: { f: f, object: object, namespace: local_assigns[:namespace] }
+          -if object.respond_to?(:seo)
+            #tab-2.tab-pane
+              .panel-body
+                =render partial: "admin/shared/form/seo/seo_fields", locals: { f: f, object: object, namespace: local_assigns[:namespace] }

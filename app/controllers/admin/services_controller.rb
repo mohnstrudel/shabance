@@ -11,7 +11,7 @@ class Admin::ServicesController < AdminController
   def new
     @service = Service.new
     @service.blocks.build
-    # @service.build_seo
+    @service.build_seo
   end
 
   def create
@@ -25,6 +25,9 @@ class Admin::ServicesController < AdminController
 
   def edit
     edit_helper(@service)
+    if @service.seo.blank?
+      @service.build_seo
+    end
     if @service.blocks.blank?
       @service.blocks.build
     end
@@ -45,6 +48,6 @@ class Admin::ServicesController < AdminController
 
   def service_params
     # params.require(:service).permit(service.attribute_names.map(&:to_sym).push(barcodes_attributes: [:id, :value, :_destroy, :service_id]).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
-    params.require(:service).permit(Service.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :service_id ]).push(tag_list:[]).push(:avatar))
+    params.require(:service).permit(Service.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :service_id ]).push(tag_list:[]).push(:avatar).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
   end
 end

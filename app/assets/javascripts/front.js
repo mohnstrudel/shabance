@@ -17,3 +17,7 @@
 
 // RAILS SCRIPTS
 //= require rails-ujs
+
+//= require front/cases
+//= require front/contact
+//= require front/newsletter

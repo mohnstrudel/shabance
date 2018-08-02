@@ -6,6 +6,9 @@ class Article < ApplicationRecord
 
   before_save :set_slug
 
+  has_one :seo, dependent: :destroy
+  accepts_nested_attributes_for :seo, allow_destroy: true
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 

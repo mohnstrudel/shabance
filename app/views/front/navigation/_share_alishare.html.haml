@@ -1,0 +1,13 @@
+%ul.social-icons.style-2
+  %li
+    =link_to "http://www.facebook.com/sharer.php?u=#{request.protocol}#{request.host_with_port}", :target => :blank do
+      %i.icon-facebook
+  %li
+    =link_to "https://twitter.com/intent/tweet?url=#{request.protocol}#{request.host_with_port}", target: :blank do
+      %i.icon-twitter
+  %li
+    =link_to "https://vk.com/share.php?url=#{request.protocol}#{request.host_with_port}", target: :blank do
+      %i.icon-vkontakte
+  %li
+    =link_to "https://plus.google.com/share?url=#{request.protocol}#{request.host_with_port}", target: :blank do
+      %i.icon-gplus-3

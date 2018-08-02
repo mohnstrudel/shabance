@@ -58,24 +58,4 @@
 
 =render 'front/static_pages/contact_pages/additional_offices'
 
-.page-section-bg2.parallax-section{"data-bg" => "images/1920x1000_bg3.jpg"}
-  .container
-    .row
-      .col-sm-4
-        %h2.section-title
-          Как мы можем вам помочь?
-          %span.item-divider-3.style-3
-        %p Ваш случай будет рассмотрен в течении 24 часов. Все поля обязательны.
-      .col-sm-8
-        %form#contact-form.contact-form
-          .flex-row
-            .col-sm-4
-              %input{:name => "cf-name", :placeholder => "Имя *", :required => "", :type => "text"}/
-            .col-sm-4
-              %input{:name => "cf-phone", :placeholder => "Телефон *", :required => "", :type => "tel"}/
-            .col-sm-4
-              %input{:name => "cf-email", :placeholder => "Эл.почта *", :required => "", :type => "email"}/
-            .col-sm-12
-              %textarea{:name => "cf-message", :placeholder => "Сообщение *", :required => "", :rows => "3"}
-            .col-sm-12
-              %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Отправить
+=render partial: 'front/navigation/contact_form'

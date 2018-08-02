@@ -1,0 +1,64 @@
+.ibox.float-e-margins
+  .ibox-title
+    %h5
+      =t('admin.form.tab_main.seo')
+      %small=t('admin.form.hints.seo.tab_title')
+    .ibox-tools
+      %a.collapse-link
+        %i.fa.fa-chevron-up
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-wrench
+      %ul.dropdown-menu.dropdown-user
+        %li
+          %a{:href => "#"} Config option 1
+        %li
+          %a{:href => "#"} Config option 2
+      %a.close-link
+        %i.fa.fa-times
+  .ibox-content
+    =f.fields_for :seo do |seo_builder|
+      .form-group
+        %label.col-lg-2.control-label
+          =t('admin.form.model.seo.title')
+        .col-lg-10
+          =seo_builder.text_field :title, class: 'form-control'
+      .hr-line-dashed
+
+      .form-group
+        %label.col-lg-2.control-label
+          =t('admin.form.model.seo.description')
+        .col-lg-10
+          =seo_builder.text_area :description, class: 'form-control', rows: 4
+      .hr-line-dashed
+      .form-group
+        %label.col-sm-2.control-label
+          =t('admin.form.model.seo.image')
+        .col-sm-8
+          .fileinput.fileinput-new.input-group{"data-provides" => "fileinput"}
+            .form-control{"data-trigger" => "fileinput"}
+              %i.glyphicon.glyphicon-file.fileinput-exists
+              %span.fileinput-filename
+            %span.input-group-addon.btn.btn-default.btn-file
+              %span.fileinput-new
+                =t('admin.form.actions.select_file')
+              %span.fileinput-exists
+                =t('admin.form.actions.change')
+              =seo_builder.file_field :image
+            %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
+        .col-sm-2
+          -if object.seo.build_image
+            =image_tag object.seo.build_image
+      .hr-line-dashed
+
+      .form-group
+        %label.col-lg-2.control-label
+          =t('admin.form.model.seo.keywords')
+        .col-lg-10
+          =seo_builder.select :keywords, object.seo.keywords.map {|i| [i, i]}, {}, {id: 'object_keywords', class: 'form-control custom-bootstrap-tagsinput', data: {role: "tagsinput"}, multiple: true}
+          %span.help-block.m-b-none=t('admin.form.hints.seo.keywords')
+      .hr-line-dashed
+    .hr-line-dashed
+      .form-group
+        .col-sm-4.col-sm-offset-2
+          =link_to "Back", send("admin_#{local_assigns[:namespace]}#{object_name(object).pluralize}_path"), class: 'btn btn-white'
+          =f.submit "Save", class: 'btn btn-primary'

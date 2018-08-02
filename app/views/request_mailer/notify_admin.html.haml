@@ -9,4 +9,6 @@
 -if @request.email.present?
   %p="Email: #{@request.email}"
 
+%p="Запрос пришел со страницы: #{@request.page_reference}."
+
 %p="Текст сообщения: #{@request.body}"

@@ -14,6 +14,9 @@ class Post < ApplicationRecord
   mount_uploaders :images, LogoUploader
   serialize :images, JSON # If you use SQLite, add this line.
 
+  has_one :seo, dependent: :destroy
+  accepts_nested_attributes_for :seo, allow_destroy: true
+
   def get_video_url
     start = video =~ /watch\?v=/
     string_to_compare_length = 'watch?v='.length
@@ -25,6 +28,15 @@ class Post < ApplicationRecord
     created_at.strftime("%d %b %Y")
   end
 
+  def try_images
+    if logo.present?
+      return logo.thumb_middle_size.url
+    elsif images.present?
+      return images.first.thumb_middle_size.url
+    else
+      return nil
+    end
+  end
 
   def next
     # Post.active.where("published_at > ?", published_at).order("published_at DESC").last

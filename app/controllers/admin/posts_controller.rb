@@ -10,6 +10,9 @@ class Admin::PostsController < AdminController
 
   def new
     @post = Post.new
+    if @post.seo.blank?
+      @post.build_seo
+    end
   end
 
   def create
@@ -22,6 +25,9 @@ class Admin::PostsController < AdminController
   end
 
   def edit
+    if @post.seo.blank?
+      @post.build_seo
+    end
     edit_helper(@post)
   end
 
@@ -36,6 +42,6 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(Post.attribute_names.map(&:to_sym).push(tag_list:[]).push({ images: [] }))
+    params.require(:post).permit(Post.attribute_names.map(&:to_sym).push(tag_list:[]).push({ images: [] }).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
   end
 end

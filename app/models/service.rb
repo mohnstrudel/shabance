@@ -9,6 +9,9 @@ class Service < ApplicationRecord
   has_many :blocks, dependent: :destroy
   accepts_nested_attributes_for :blocks, :allow_destroy => true
 
+  has_one :seo, dependent: :destroy
+  accepts_nested_attributes_for :seo, allow_destroy: true
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 

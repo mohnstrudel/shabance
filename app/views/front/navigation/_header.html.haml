@@ -21,19 +21,7 @@
             %a.current{:href => "#"} En
              | 
             %a{:href => "#"} Español
-          %ul.social-icons.style-2
-            %li
-              %a{:href => "#"}
-                %i.icon-facebook
-            %li
-              %a{:href => "#"}
-                %i.icon-twitter
-            %li
-              %a{:href => "#"}
-                %i.icon-gplus-3
-            %li
-              %a{:href => "#"}
-                %i.icon-linkedin-3
+          =render partial: 'front/navigation/share_alishare'
   / Top header
   .top-header
     .container.extra
@@ -84,6 +72,6 @@
                 %a{:href => contact_path} Контакты
           / - - - - - - - - - - - - end Navigation - - - - - - - - - - - - - - -
         .search-holder
-          %a.btn.btn-big.btn-style-2{:href => "#"} Бесплатная консультация
+          %a.btn.btn-big.btn-style-2{:href => "#contact-form"} Бесплатная консультация
           %button.search-button{:type => "button"}
 / - - - - - - - - - - - - end Header - - - - - - - - - - - - - - -

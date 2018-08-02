@@ -18,7 +18,7 @@ class Front::ContactRequestsController < FrontController
   private 
 
   def request_params
-    params.require(:contact_request).permit(NewsletterRequest.attribute_names.map(&:to_sym))
+    params.require(:contact_request).permit(ContactRequest.attribute_names.map(&:to_sym))
   end
 
 end

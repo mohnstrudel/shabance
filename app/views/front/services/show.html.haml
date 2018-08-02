@@ -53,20 +53,5 @@
                     %a{:href => "#"}=subcategory.title
 
       / Widget
-      .widget.with-bg2
-        %h5.widget-title Свяжитесь с нами сегодня
-        %p.text-size-small
-          Мы рассмотрим ваш случай в течении 24 часов.
-          Все поля обязательны.
-        %form#contact-form.contact-form
-          .flex-row
-            .col-sm-12
-              %input{:name => "cf-name", :placeholder => "Имя *", :type => "text"}
-            .col-sm-12
-              %input{:name => "cf-phone", :placeholder => "Тел. *", :type => "tel"}
-            .col-sm-12
-              %input{:name => "cf-email", :placeholder => "Эл. почта *", :type => "email"}
-            .col-sm-12
-              %textarea{:name => "cf-message", :placeholder => "Сообщение *", :rows => "3"}
-            .col-sm-12
-              %button.btn.btn-style-2{"data-type" => "submit", :type => "submit"} Отправить
+      =render partial: 'front/navigation/contact_widget'
+      

@@ -1,0 +1,19 @@
+.widget.with-bg2
+  %h5.widget-title Свяжитесь с нами сегодня
+  %p.text-size-small
+    Мы рассмотрим ваш случай в течении 24 часов.
+    Все поля обязательны.
+  =form_with(model: ContactRequest.new, class: 'contact-form', id: 'contact-form') do |form|
+    =form.hidden_field :page_reference, value: request.original_url 
+    .flex-row
+      .col-sm-12
+        =form.text_field :name, placeholder: 'Имя *'
+      .col-sm-12
+        =form.text_field :phone, placeholder: 'Тел. *'
+      .col-sm-12
+        =form.text_field :email, placeholder: 'Эл. почта *' 
+      .col-sm-12
+        =form.text_area :body, placeholder: 'Сообщение *', rows: 3
+      .col-sm-12
+        =form.submit 'Отправить', class: 'btn btn-style-2'
+    

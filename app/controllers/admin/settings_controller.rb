@@ -12,6 +12,7 @@ class Admin::SettingsController < AdminController
     @setting = Setting.new
     @setting.phones.build
     @setting.opening_hours.build
+    @setting.build_seo
   end
 
   def create
@@ -31,6 +32,9 @@ class Admin::SettingsController < AdminController
     if @setting.opening_hours.blank?
       @setting.opening_hours.build
     end
+    if @setting.seo.blank?
+      @setting.build_seo
+    end
   end
 
   def destroy
@@ -45,6 +49,6 @@ class Admin::SettingsController < AdminController
 
   def setting_params
     params.require(:setting).permit(Setting.attribute_names.map(&:to_sym).push(phones_attributes: [:id, :value, :_destroy, :setting_id]).
-      push(opening_hours_attributes: [:id, :title, :value, :_destroy, :setting_id]))
+      push(opening_hours_attributes: [:id, :title, :value, :_destroy, :setting_id]).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
   end
 end

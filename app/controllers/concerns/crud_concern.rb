@@ -21,7 +21,7 @@ module CrudConcern
   def index_helper(object, options = {})
     keywords = params[:keywords]
     scope = options[:scope] || 'all'
-
+    cat_id = params[:category_id]
     # page_size = Rails.application.config.page_size
 
     begin

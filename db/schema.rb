@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_130200) do
+ActiveRecord::Schema.define(version: 2018_08_02_162817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,25 @@ ActiveRecord::Schema.define(version: 2018_07_30_130200) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "seos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.string "keywords", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_id"
+    t.bigint "case_id"
+    t.bigint "article_id"
+    t.bigint "service_id"
+    t.bigint "setting_id"
+    t.index ["article_id"], name: "index_seos_on_article_id"
+    t.index ["case_id"], name: "index_seos_on_case_id"
+    t.index ["post_id"], name: "index_seos_on_post_id"
+    t.index ["service_id"], name: "index_seos_on_service_id"
+    t.index ["setting_id"], name: "index_seos_on_setting_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "leading_description"
@@ -254,6 +273,11 @@ ActiveRecord::Schema.define(version: 2018_07_30_130200) do
   add_foreign_key "phones", "settings"
   add_foreign_key "post_categories", "posts"
   add_foreign_key "posts", "post_categories"
+  add_foreign_key "seos", "articles"
+  add_foreign_key "seos", "cases"
+  add_foreign_key "seos", "posts"
+  add_foreign_key "seos", "services"
+  add_foreign_key "seos", "settings"
   add_foreign_key "services", "blocks"
   add_foreign_key "services", "categories"
 end

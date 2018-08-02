@@ -10,6 +10,7 @@ class Admin::ArticlesController < AdminController
 
   def new
     @article = Article.new
+    @article.build_seo
   end
 
   def create
@@ -23,6 +24,9 @@ class Admin::ArticlesController < AdminController
 
   def edit
     edit_helper(@article)
+    if @article.seo.blank?
+      @article.build_seo
+    end
   end
 
   def destroy
@@ -37,7 +41,7 @@ class Admin::ArticlesController < AdminController
 
   def article_params
     # params.require(:article).permit(article.attribute_names.map(&:to_sym).push(barcodes_attributes: [:id, :value, :_destroy, :article_id]).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
-    params.require(:article).permit(Article.attribute_names.map(&:to_sym).push(tag_list: []))
+    params.require(:article).permit(Article.attribute_names.map(&:to_sym).push(tag_list: []).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
   end
 end
 

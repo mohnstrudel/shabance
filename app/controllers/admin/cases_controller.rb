@@ -9,6 +9,8 @@ class Admin::CasesController < AdminController
 
   def new
     @case = Case.new
+    @case.build_seo
+    
   end
 
   def create
@@ -22,6 +24,9 @@ class Admin::CasesController < AdminController
 
   def edit
     edit_helper(@case)
+    if @case.seo.blank?
+      @case.build_seo
+    end
   end
 
   def destroy
@@ -36,7 +41,7 @@ class Admin::CasesController < AdminController
 
   def case_params
     # params.require(:case).permit(case.attribute_names.map(&:to_sym).push(barcodes_attributes: [:id, :value, :_destroy, :case_id]).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
-    params.require(:case).permit(Case.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :case_id ]).push(tag_list: []))
+    params.require(:case).permit(Case.attribute_names.map(&:to_sym).push(blocks_attributes: [:id, :block_body, :_destroy, :case_id ]).push(tag_list: []).push(seo_attributes: [:id, :title, :description, :image, keywords: []]))
   end
 end
 

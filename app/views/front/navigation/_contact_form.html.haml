@@ -8,6 +8,7 @@
         %p Рассмотрим ваш случай в течении 24 часов. Все поля обязательны для заполнения.
       .col-sm-8
         =form_with(model: ContactRequest.new, class: 'contact-form', id: 'contact-form') do |form|
+          =form.hidden_field :page_reference, value: request.original_url 
           .flex-row
             .col-sm-4
               =form.text_field :name, placeholder: 'Имя *', required: ""

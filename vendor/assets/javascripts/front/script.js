@@ -10,35 +10,7 @@
 			$('body').css('cursor', 'pointer');
 		}
 
-		/* ------------------------------------------------
-		Popup
-		------------------------------------------------ */
-
-		var popup_item = $("#popup");
-
-		if(popup_item.length){
-
-			popup_item.fadeOut();
-
-		    $(document).mouseup(function (e) {
-
-			    var container = $(".case-popup");
-			    if (container.has(e.target).length == 0){
-			        container.fadeOut("slow");
-			    }
-
-			});
-
-			$('.open-popup').on('click', function() {
-		      popup_item.fadeIn("slow");
-		      return false;
-		    });
-
-		    $('.close-popup').on('click', function() {
-		      popup_item.fadeOut("slow");
-		    });
-
-		}
+		
 
 		/* ---------------------------------------------------- */
 		/*	Items equal height									*/

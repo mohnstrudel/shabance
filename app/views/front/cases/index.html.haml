@@ -1,25 +1,25 @@
 .container
   .icons-box.price-box.style-1.type-3
     .flex-row.fx-col-3
-      -@cases.each do |custom_case|
+      -@cases.each_with_index do |custom_case, index|
         .icons-wrap
           .icons-item
             .item-box
               %h2.price=custom_case.price
               %p.text-size-medium
                 =custom_case.title
-              %a.info-btn.open-popup{:href => "#"} Подробнее
+              %a.info-btn.open-popup{:href => "#", "data-index" => index} Подробнее
 
 
--@cases.each do |custom_case|
-  #popup.case-popup
+-@cases.each_with_index do |custom_case, index|
+  .div{id: "popup_#{index}", class: "case-popup"}
     .popup-inner
       %ul.case-list
         %li.case-item
           .content-element3
             .pre-title=custom_case.title
             %h5.sub-title
-              %b Settlement for Dangerous Product Victims
+              %b Разрешили судьбу анального насильника собак-такс
             %p=custom_case.body
           .content-element3
             .pre-title Адвокаты
