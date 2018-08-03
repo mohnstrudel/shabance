@@ -17,10 +17,10 @@
           %i.licon-map-marker
           =Setting.first.try(:address)
         .socials
-          .lang-area
-            %a.current{:href => "#"} En
-             | 
-            %a{:href => "#"} Español
+          / .lang-area
+          /   %a.current{:href => "#"} En
+          /    | 
+          /   %a{:href => "#"} Español
           =render partial: 'front/navigation/share_alishare'
   / Top header
   .top-header
@@ -28,7 +28,7 @@
       .flex-row.flex-center.flex-justify
         / logo
         .logo-wrap
-          %a.logo{:href => "index.html"}
+          %a.logo{:href => root_path}
             %img{:alt => "", :src => "#{asset_path 'stock/logo2.png'}"}/
         / Contact info
         %ul.contact-info.style-2
@@ -72,6 +72,7 @@
                 %a{:href => contact_path} Контакты
           / - - - - - - - - - - - - end Navigation - - - - - - - - - - - - - - -
         .search-holder
-          %a.btn.btn-big.btn-style-2{:href => "#contact-form"} Бесплатная консультация
-          %button.search-button{:type => "button"}
+          -unless controller.action_name == 'index'
+            %a.btn.btn-big.btn-style-2{:href => "#contact-form"} Бесплатная консультация
+            %button.search-button{:type => "button"}
 / - - - - - - - - - - - - end Header - - - - - - - - - - - - - - -
