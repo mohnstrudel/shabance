@@ -1,2 +1,4 @@
 module Front::CasesHelper
+
+  
 end
