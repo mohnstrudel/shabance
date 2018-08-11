@@ -7,3 +7,23 @@
       / =f.bootsy_area :description, class: 'form-control', rows: 12
       %span.help-block.m-b-none Сумма по кейсу (в миллионах)
   .hr-line-dashed
+
+-if object.respond_to?(:author)
+  .form-group
+    %label.col-sm-2.control-label
+      Автор
+    .col-sm-10
+      =f.text_field :author, class: 'form-control'
+      / =f.bootsy_area :description, class: 'form-control', rows: 12
+      %span.help-block.m-b-none Автор или руководитель проекта (кейса)
+  .hr-line-dashed
+
+-if object.respond_to?(:subtitle)
+  .form-group
+    %label.col-sm-2.control-label
+      Подзаголовок
+    .col-sm-10
+      =f.text_field :subtitle, class: 'form-control'
+      / =f.bootsy_area :description, class: 'form-control', rows: 12
+      %span.help-block.m-b-none Дополнительно описывает сущность
+  .hr-line-dashed

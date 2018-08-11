@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :contact_requests
     # resources :services
 
+    kinds = %w|IPA brown_ale pilsner lager lambic hefeweizen|
+    get 'beers/:kind' => 'beers#kind', constraints: {kind: Regexp.new(kinds.join('|'))}
+
   end
 
   namespace :admin do
