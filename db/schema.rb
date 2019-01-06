@@ -168,17 +168,6 @@ ActiveRecord::Schema.define(version: 2018_08_11_195609) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
-  create_table "requests", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "message"
-    t.string "phone"
-    t.string "subject"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "seos", force: :cascade do |t|
     t.string "title"
     t.text "description"

@@ -82,4 +82,4 @@ production:
   <<: *default
   database: shabance_production
   username: shabance
-  password: <%= Rails.application.credentials.database_password %>
+  password: <%= Figaro.env.database_password %>

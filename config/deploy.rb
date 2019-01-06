@@ -1,5 +1,5 @@
 # Change these
-server '165.227.143.13', port: 22, roles: [:web, :app, :db], primary: true
+server '89.223.90.159', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:mohnstrudel/shabance.git'
 set :application,     'shabance'
@@ -73,7 +73,7 @@ namespace :deploy do
       append :linked_files, "config/master.key"
     end
   end
-  
+
   desc 'Run rake yarn:install'
   task :yarn_install do
     on roles(:web) do
@@ -82,7 +82,7 @@ namespace :deploy do
       end
     end
   end
-  
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
