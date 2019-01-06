@@ -35,5 +35,7 @@ module Shabance
     config.service_types = {'1' => 'Физические лица', '2' => 'Юридические лица'}
 
     config.page_size = 10
+
+    config.secret_key_base = Figaro.env.secret_key_base
   end
 end
