@@ -70,7 +70,7 @@ namespace :deploy do
   task :master_key do
     on roles(:app) do
       # execute("scp config/master.key deploy@165.227.143.13:/home/deploy/apps/shabance/current/config/")
-      append :linked_files, "config/master.key"
+      # append :linked_files, "config/master.key"
     end
   end
 
