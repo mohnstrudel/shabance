@@ -63,13 +63,13 @@ Rails.application.configure do
 
   # Mailer config for devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
-  
+
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true 
-  
+  config.action_mailer.perform_deliveries = true
+
   config.action_mailer.delivery_method = :smtp
 
-  # Specify what domain to use for mailer URLs 
+  # Specify what domain to use for mailer URLs
 
   config.action_mailer.smtp_settings = {
    user_name: Figaro.env.mailer_user,
