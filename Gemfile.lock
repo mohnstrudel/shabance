@@ -398,7 +398,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-    redcarpet (3.4.0)
+    redcarpet (3.5.1)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
